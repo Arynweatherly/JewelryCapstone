@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndCapstone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200205042205_Initial")]
+    [Migration("20200205181230_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -185,10 +185,15 @@ namespace BackEndCapstone.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Product");
 
@@ -196,262 +201,262 @@ namespace BackEndCapstone.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 825, DateTimeKind.Local).AddTicks(7492),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 687, DateTimeKind.Local).AddTicks(113),
                             Description = "Rustic triangle shaped copper earrings with large, round calcite gemstone.",
                             ImagePath = "TriangleCalciteEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Calcite Triangle Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6336),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(3919),
                             Description = "Elegant sterling silver and black onyx dangle earrings.",
                             ImagePath = "BlackOnyxDangle.jpg",
                             ProductTypeId = 1,
                             Title = "Black Onyx Dangle Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 3,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6411),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4036),
                             Description = "Trendy tassle earrings with all natural pink and coral jasper gemstones.",
                             ImagePath = "blueJasperTassle.jpg",
                             ProductTypeId = 1,
                             Title = "Pink and Blue Jasper Tassle Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 4,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6433),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4073),
                             Description = "Hammered out gold hoop earrings with wire-wrapped lepidolite chips.",
                             ImagePath = "LepidoliteChipHoops.jpg",
                             ProductTypeId = 1,
                             Title = "Lepidolite Gold Hoops",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 5,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6451),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4102),
                             Description = "Hammered out gold hoops with wire wrapped pieces of petrified coral.",
                             ImagePath = "coralHoops.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Hoop Earrings With Petrified Coral",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 6,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6470),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4133),
                             Description = "Hammered out gold earrings with bronze chain.",
                             ImagePath = "GoldBronzeChainEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Gold and Bronze Chain Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 7,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6487),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4159),
                             Description = "Teardrop shaped gold earrings with black tassles.",
                             ImagePath = "GoldTeardropBlackTassle.jpg",
                             ProductTypeId = 1,
                             Title = "Teardrop Black Tassle Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 8,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6503),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4185),
                             Description = "Hammered out diamond shaped gold hoops with wire wrapped larimar gemstones.",
                             ImagePath = "DiamondLarimarEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Diamond Shaped Hoops with Larimar Gemstones",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 9,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6520),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4211),
                             Description = "Asymmetrical sterling silver bead frames with rare cut amazonite gemstones.",
                             ImagePath = "SterlingAmazoniteEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Sterling Silver and Amazonite Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 10,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6537),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4239),
                             Description = "Hammered out copper hoop earrings with wire wrapped pink opal gemstones.",
                             ImagePath = "BronzePinkOpalHoops.jpg",
                             ProductTypeId = 1,
                             Title = "Copper Hoops with Pink Opal",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 11,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6554),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4314),
                             Description = "Rare cut autumn jasper gemstones set inside sterling silver bead frame.",
                             ImagePath = "AutumnJasperFramed.jpg",
                             ProductTypeId = 1,
                             Title = "Framed Autumn Jasper Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 12,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6570),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4343),
                             Description = "Hammered out gold hoop earrings wire wrapped with chips of blue lace agate.",
                             ImagePath = "BlueLaceHoops.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Hoops with Blue Lace Agate",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 13,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6586),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4369),
                             Description = "Inverted gold teardrop earrings with wire wrapped lepidolite gemstones.",
                             ImagePath = "InvertedTeardropLarimar.jpg",
                             ProductTypeId = 1,
                             Title = "Inverted Teardop Lepidolite Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 14,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6603),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4396),
                             Description = "Gold hoop earrings accented with wire wrapped, teardrop shaped lapis gemstone.",
                             ImagePath = "LapisHoopEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Hoop Lapis Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 15,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6620),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4422),
                             Description = "Hammered out gold teardrop earrings with wire wrapped chips of rose quartz.",
                             ImagePath = "RoseGoldTeardrop.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Teardrop Earrings with Rose Quartz",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 16,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6636),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4448),
                             Description = "Hammered out gold hoop earrings with rare cut aqua quartz gemstones.",
                             ImagePath = "AquaQuartzGoldHoops.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Hoop earrings with Aqua Quartz Gemstone",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 17,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6653),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4475),
                             Description = "Beautiful antique copper earrings with shimmering sunstones.",
                             ImagePath = "sunstoneEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Antique Copper Earrings With Sunstone",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 18,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6699),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4503),
                             Description = "Bronze dangle earrings with unique cut autumn jasper gemstones.",
                             ImagePath = "BronzeAndAutumnJasper.jpg",
                             ProductTypeId = 1,
                             Title = "Bronze and Autumn Jasper Dangle Earrings ",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 19,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6718),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4529),
                             Description = "Beautifully elegant sterling silver thread earrings with freshwater pearls.",
                             ImagePath = "PearlThreadEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Threaded Pearl Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 20,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6734),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4556),
                             Description = "Hammered out gold earrings with wire wrapped freswater pearls.",
                             ImagePath = "HammeredGoldPearl.jpg",
                             ProductTypeId = 1,
                             Title = "Gold Earrings with Wire Wrapped Pearls",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 21,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6751),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4582),
                             Description = "Bronze hoop earrings with pink and grey jasper gemstones.",
                             ImagePath = "PinkGreyJasperEarrings.jpg",
                             ProductTypeId = 1,
                             Title = "Pink and Grey Jasper Earrings",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 22,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6768),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4608),
                             Description = "Delicate pink freshwater pearl necklace on gold chain.",
                             ImagePath = "pearlNecklace.jpg",
                             ProductTypeId = 2,
                             Title = "Delicate Freshwater Pearl Necklace",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 23,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6784),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4633),
                             Description = "Beautiful threaded freshwater pearl necklace with aqua quartz and purple crystals.",
                             ImagePath = "ThreadPearlNecklace.jpg",
                             ProductTypeId = 2,
                             Title = "Threaded Pearl Necklace",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 24,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6800),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4658),
                             Description = "Fun earth toned bracelet made with glass beads and jasper gemstones.",
                             ImagePath = "JasperBracelet.jpg",
                             ProductTypeId = 3,
                             Title = "Jasper and Glass Bracelet",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 25,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6816),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4684),
                             Description = "Bracelet made with wooden beads and stretchy floss cord.",
                             ImagePath = "LightWoodBracelet.jpg",
                             ProductTypeId = 3,
                             Title = "Light Wood Bracelet",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 26,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(6833),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(4710),
                             Description = "Bracelet made with wooden beads and stretchy floss cord.",
                             ImagePath = "DarkWoodBracelet.jpg",
                             ProductTypeId = 3,
                             Title = "Dark Wood Bracelet",
-                            UserId = 1
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
@@ -647,8 +652,8 @@ namespace BackEndCapstone.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -659,169 +664,169 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = 1,
                             Comment = "These are so pretty! love the color!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(8611),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(6968),
                             ProductId = 3,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 2,
                             Comment = "Love these gemstones and the shape of the hoops",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9212),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7762),
                             ProductId = 15,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 3,
                             Comment = "Lapis gems are my favorite. Nice wire wrapping!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9255),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7832),
                             ProductId = 14,
-                            UserId = 4
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 4,
                             Comment = "These purple gems are so cool. such a pretty design!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9274),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7861),
                             ProductId = 13,
-                            UserId = 4
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 5,
                             Comment = "Didn't know quartz came in this color. Very cool!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9292),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7886),
                             ProductId = 16,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 6,
                             Comment = "These sunstones are so pretty!!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9312),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7914),
                             ProductId = 17,
-                            UserId = 5
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 7,
                             Comment = "These blue lace gems are awesome. Love the wire wrapping",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9329),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(7938),
                             ProductId = 12,
-                            UserId = 7
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 8,
                             Comment = "Interesting earrings!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9346),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8035),
                             ProductId = 11,
-                            UserId = 4
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 9,
                             Comment = "These bead frames are cool!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9364),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8062),
                             ProductId = 11,
-                            UserId = 6
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 10,
                             Comment = "Oh my god these are so pretty! I want a pair",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9382),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8089),
                             ProductId = 10,
-                            UserId = 8
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 11,
                             Comment = "I like how you used the bronze cirle with the gemstones!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9400),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8113),
                             ProductId = 18,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 12,
                             Comment = "Threaded earrings are so pretty. do you have them in any other gemstone?",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9417),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8137),
                             ProductId = 19,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 13,
                             Comment = "I love how you got the pearls to alternate up and down!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9434),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8162),
                             ProductId = 20,
-                            UserId = 8
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 14,
                             Comment = "These pearls are so pretty!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9451),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8186),
                             ProductId = 22,
-                            UserId = 5
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 15,
                             Comment = "Ordered this necklace and i absolutely love it. Would definitely recommend it!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9468),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8210),
                             ProductId = 22,
-                            UserId = 7
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 16,
                             Comment = "I love the antique feel of these earrings!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9485),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8235),
                             ProductId = 2,
-                            UserId = 7
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 17,
                             Comment = "Nice wire wrapping!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9572),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8258),
                             ProductId = 4,
-                            UserId = 8
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 18,
                             Comment = "I love the antique feel of these earrings!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9597),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8284),
                             ProductId = 2,
-                            UserId = 7
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 19,
                             Comment = "So cute and trendy!",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9615),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8308),
                             ProductId = 7,
-                            UserId = 6
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 20,
                             Comment = "Ordered a few of these and I love them.",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9632),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8333),
                             ProductId = 25,
-                            UserId = 9
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 21,
                             Comment = "This bracelet is dope",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 827, DateTimeKind.Local).AddTicks(9650),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 689, DateTimeKind.Local).AddTicks(8357),
                             ProductId = 26,
-                            UserId = 9
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
@@ -967,7 +972,7 @@ namespace BackEndCapstone.Migrations
                         new
                         {
                             Id = 1,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(1262),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(636),
                             Description = "First feed one crimp beed onto the wire and then loop it through a clasp or a jump ringand then back through the crimp. PLace the crimp in the OUTER jaw of the crimp tool and make one firm compression. Then place the crimp bead into the crescent-shaped groove of the crimp tool and firmly compress. String the remaining beads onto the wire.",
                             ProductId = 0,
                             Title = "How to use crimping pliers",
@@ -976,7 +981,7 @@ namespace BackEndCapstone.Migrations
                         new
                         {
                             Id = 2,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(1787),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(1455),
                             Description = "In this video, learn how to make a wrapped wire loop for jewelry making. This basic technique is used when putting a bead on a head pin or eye pin as a dangle or a link, and is more durable than a simple wire loop.",
                             ProductId = 0,
                             Title = "How to wire wrap loops for earrings",
@@ -985,7 +990,7 @@ namespace BackEndCapstone.Migrations
                         new
                         {
                             Id = 3,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(1828),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(1528),
                             Description = "This video shows you how to use all the essential jewelry making tools for beginners.",
                             ProductId = 0,
                             Title = "Tools for beginners",
@@ -994,7 +999,7 @@ namespace BackEndCapstone.Migrations
                         new
                         {
                             Id = 4,
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(1847),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(1558),
                             Description = "Learn how to make that trickey wire wrapped bead cap with this video.",
                             ProductId = 0,
                             Title = "How to Make a Wire Wrapped Bead Cap",
@@ -1018,8 +1023,8 @@ namespace BackEndCapstone.Migrations
                     b.Property<int>("TutorialId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1030,41 +1035,41 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = 1,
                             Comment = "Thanks for posting. I struggled with making good looking crimps for so long. This video was very helpful.",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(3482),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(4154),
                             TutorialId = 1,
-                            UserId = 6
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 2,
                             Comment = "Glad you posted this. I just started making jewelry and wasn't sure which tools to buy! thanks again.",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(4054),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(5213),
                             TutorialId = 3,
-                            UserId = 8
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 3,
                             Comment = "My wire wrapping always looks so ugly because i was doing it wrong. Glad you posted this",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(4227),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(5319),
                             TutorialId = 2,
-                            UserId = 4
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 4,
                             Comment = "My wire wrapping looks so much better after watching this video! thank you",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(4246),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(5367),
                             TutorialId = 2,
-                            UserId = 7
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
                         new
                         {
                             Id = 5,
                             Comment = "I've had a hard time with bead caps for a while, hoping that after seeing this video it wont be as difficult",
-                            DateAdded = new DateTime(2020, 2, 4, 22, 22, 4, 828, DateTimeKind.Local).AddTicks(4263),
+                            DateAdded = new DateTime(2020, 2, 5, 12, 12, 29, 690, DateTimeKind.Local).AddTicks(5406),
                             TutorialId = 4,
-                            UserId = 3
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         });
                 });
 
@@ -1293,13 +1298,13 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1fff235c-7b44-4fc5-b265-7d3dab0d72e5",
+                            ConcurrencyStamp = "22bfb3df-e202-49b2-9310-778e191c4474",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIXf1o+3NSWE2Cg4065nOK+pvF6DEKDaFBif4/qNHpZ0cMYlDg7cpci/AusbNxvWzQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA6vBRNFnOxmbSMkZk60dXt4BQSqUhs+yogWiar2rncNzrXpZWigN0ZQvnBW0+FezQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -1311,7 +1316,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "10000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a9a54704-0556-45be-ab6d-266736175fa8",
+                            ConcurrencyStamp = "7784c348-a7fa-4b95-9479-e611a3bd5fa0",
                             Email = "aryn@aryn.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1328,7 +1333,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "01000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "46c49919-9158-401a-9012-ddc8f708bb9b",
+                            ConcurrencyStamp = "0af8af63-dcf3-44df-985b-5adb0eae8b90",
                             Email = "sage@sage.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1345,7 +1350,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "00100000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5a14b8e9-2a33-486e-861d-99ace7455089",
+                            ConcurrencyStamp = "a4cb1d16-d4c7-4f89-a3fb-ebbd0b9e73fc",
                             Email = "heidi@heidi.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1362,7 +1367,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "00010000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6fdac0ba-0d95-4adf-894a-0b41b1c2f7e1",
+                            ConcurrencyStamp = "4ce4f18b-2a94-47f7-abc9-bfde8078cc0a",
                             Email = "lauren@lauren.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1379,7 +1384,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "00001000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8f57d928-2a4d-47dc-ad9f-b3750e3f7e3d",
+                            ConcurrencyStamp = "c27a6440-d6a1-4976-8910-c7e317a6b0cb",
                             Email = "dylan@dylan.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1396,7 +1401,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "000001000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1ae6dcb1-6a96-43da-bd62-2f38bee2d135",
+                            ConcurrencyStamp = "dd37bcbd-1069-417e-875b-fa044a1fabe0",
                             Email = "madi@madi.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1413,7 +1418,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "000000010-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3901d435-69a6-4d73-a134-6d9efad8eefb",
+                            ConcurrencyStamp = "013f8687-0d7d-4911-9e74-96d5ba60ec31",
                             Email = "mo@mo.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1430,7 +1435,7 @@ namespace BackEndCapstone.Migrations
                         {
                             Id = "000000001-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "797c3f47-bd72-49fb-bc3e-36bacdb8ed54",
+                            ConcurrencyStamp = "b3e45df2-f35e-4c19-be92-94a4c72f5a7a",
                             Email = "taylor@taylor.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -1443,6 +1448,21 @@ namespace BackEndCapstone.Migrations
                             FirstName = "taylor",
                             LastName = "caroll"
                         });
+                });
+
+            modelBuilder.Entity("BackEndCapstone.Models.Product", b =>
+                {
+                    b.HasOne("BackEndCapstone.Models.ProductType", "ProductType")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndCapstone.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
