@@ -22,7 +22,7 @@ namespace BackEndCapstone.Data
         public DbSet<Tutorial> Tutorial { get; set; }
         public DbSet<TutorialReview> TutorialReview { get; set; }
         public DbSet<ProductReview> ProductReview { get; set; }
-        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -381,7 +381,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 1,
                 Title = "Calcite Triangle Earrings",
-                UserId = 1,
+                UserId = user.Id,
                 DateAdded = DateTime.Now,
                 ImagePath = "TriangleCalciteEarrings.jpg",
                 ProductTypeId = 1,
@@ -395,7 +395,7 @@ namespace BackEndCapstone.Data
 
             Product BlackOnyxEarrings = new Product()
             {
-                UserId = 1,
+                UserId = user.Id,
                 Id = 2,
                 Title = "Black Onyx Dangle Earrings",
                 ImagePath = "BlackOnyxDangle.jpg",
@@ -412,7 +412,7 @@ namespace BackEndCapstone.Data
             Product PinkBlueTassleEarrings = new Product()
             {
                 Id = 3,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Pink and Blue Jasper Tassle Earrings",
                 ImagePath = "blueJasperTassle.jpg",
@@ -428,7 +428,7 @@ namespace BackEndCapstone.Data
             Product LepidoliteHoops = new Product()
             {
                 Id = 4,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Lepidolite Gold Hoops",
                 DateAdded = DateTime.Now,
@@ -442,7 +442,7 @@ namespace BackEndCapstone.Data
             Product CoralHoops = new Product()
             {
                 Id = 5,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Gold Hoop Earrings With Petrified Coral",
                 ImagePath = "coralHoops.jpg",
@@ -456,7 +456,7 @@ namespace BackEndCapstone.Data
             Product HammeredGoldAndChainEarrings = new Product()
             {
                 Id = 6,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Gold and Bronze Chain Earrings",
                 ImagePath = "GoldBronzeChainEarrings.jpg",
@@ -472,7 +472,7 @@ namespace BackEndCapstone.Data
             Product BlackTassleEarrings = new Product()
             {
                 Id = 7,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Teardrop Black Tassle Earrings",
                 ImagePath = "GoldTeardropBlackTassle.jpg",
@@ -486,7 +486,7 @@ namespace BackEndCapstone.Data
             Product DiamondLarimarEarrings = new Product()
             {
                 Id = 8,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Diamond Shaped Hoops with Larimar Gemstones",
                 ImagePath = "DiamondLarimarEarrings.jpg",
@@ -500,7 +500,7 @@ namespace BackEndCapstone.Data
             Product AmazoniteSterlingEarrings = new Product()
             {
                 Id = 9,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Sterling Silver and Amazonite Earrings",
                 ImagePath = "SterlingAmazoniteEarrings.jpg",
@@ -515,7 +515,7 @@ namespace BackEndCapstone.Data
             Product PinkOpalCopperHoops = new Product()
             {
                 Id = 10,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Copper Hoops with Pink Opal",
                 ImagePath = "BronzePinkOpalHoops.jpg",
@@ -528,7 +528,7 @@ namespace BackEndCapstone.Data
             Product FramedAutumnJasperEarrings = new Product()
             {
                 Id = 11,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Framed Autumn Jasper Earrings",
                 ImagePath = "AutumnJasperFramed.jpg",
@@ -541,7 +541,7 @@ namespace BackEndCapstone.Data
             Product BlueLaceGoldHoops = new Product()
             {
                 Id = 12,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Gold Hoops with Blue Lace Agate",
                 ImagePath = "BlueLaceHoops.jpg",
@@ -554,7 +554,7 @@ namespace BackEndCapstone.Data
             Product InvertedTeardropLepidolite = new Product()
             {
                 Id = 13,
-                UserId = 1,
+                UserId = user.Id,
                 ProductTypeId = 1,
                 Title = "Inverted Teardop Lepidolite Earrings",
                 ImagePath = "InvertedTeardropLarimar.jpg",
@@ -568,7 +568,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 14,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Gold Hoop Lapis Earrings",
                 ImagePath = "LapisHoopEarrings.jpg",
                 DateAdded = DateTime.Now,
@@ -581,7 +581,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 15,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Gold Teardrop Earrings with Rose Quartz",
                 ImagePath = "RoseGoldTeardrop.jpg",
                 DateAdded = DateTime.Now,
@@ -593,7 +593,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 16,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Gold Hoop earrings with Aqua Quartz Gemstone",
                 ImagePath = "AquaQuartzGoldHoops.jpg",
                 DateAdded = DateTime.Now,
@@ -605,7 +605,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 17,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Antique Copper Earrings With Sunstone",
                 ImagePath = "sunstoneEarrings.jpg",
                 DateAdded = DateTime.Now,
@@ -617,7 +617,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 18,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Bronze and Autumn Jasper Dangle Earrings ",
                 ImagePath = "BronzeAndAutumnJasper.jpg",
                 DateAdded = DateTime.Now,
@@ -629,7 +629,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 19,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Threaded Pearl Earrings",
                 ImagePath = "PearlThreadEarrings.jpg",
                 DateAdded = DateTime.Now,
@@ -641,7 +641,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 20,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Gold Earrings with Wire Wrapped Pearls",
                 ImagePath = "HammeredGoldPearl.jpg",
                 DateAdded = DateTime.Now,
@@ -653,7 +653,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 21,
                 ProductTypeId = 1,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Pink and Grey Jasper Earrings",
                 ImagePath = "PinkGreyJasperEarrings.jpg",
                 DateAdded = DateTime.Now,
@@ -665,7 +665,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 22,
                 ProductTypeId = 2,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Delicate Freshwater Pearl Necklace",
                 ImagePath = "pearlNecklace.jpg",
                 DateAdded = DateTime.Now,
@@ -677,7 +677,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 23,
                 ProductTypeId = 2,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Threaded Pearl Necklace",
                 ImagePath = "ThreadPearlNecklace.jpg",
                 DateAdded = DateTime.Now,
@@ -690,7 +690,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 24,
                 ProductTypeId = 3,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Jasper and Glass Bracelet",
                 ImagePath = "JasperBracelet.jpg",
                 DateAdded = DateTime.Now,
@@ -703,7 +703,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 25,
                 ProductTypeId = 3,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Light Wood Bracelet",
                 ImagePath = "LightWoodBracelet.jpg",
                 DateAdded = DateTime.Now,
@@ -716,7 +716,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 26,
                 ProductTypeId = 3,
-                UserId = 1,
+                UserId = user.Id,
                 Title = "Dark Wood Bracelet",
                 ImagePath = "DarkWoodBracelet.jpg",
                 DateAdded = DateTime.Now,
@@ -737,7 +737,7 @@ namespace BackEndCapstone.Data
             ProductReview JasperTassleReview = new ProductReview()
             {
                 Id = 1,
-                UserId = 3,
+                UserId = user.Id,
                 ProductId = 3,
                 Comment = "These are so pretty! love the color!",
                 DateAdded = DateTime.Now
@@ -747,7 +747,7 @@ namespace BackEndCapstone.Data
             ProductReview RoseQuartzTeardropsReview = new ProductReview()
             {
                 Id = 2,
-                UserId = 3,
+                UserId = user.Id,
                 ProductId = 15,
                 Comment = "Love these gemstones and the shape of the hoops",
                 DateAdded = DateTime.Now
@@ -757,7 +757,7 @@ namespace BackEndCapstone.Data
             ProductReview LapisHoopsReview = new ProductReview()
             {
                 Id = 3,
-                UserId = 4,
+                UserId = user.Id,
                 ProductId = 14,
                 Comment = "Lapis gems are my favorite. Nice wire wrapping!",
                 DateAdded = DateTime.Now
@@ -767,7 +767,7 @@ namespace BackEndCapstone.Data
             ProductReview InvertedTeardropLepidoliteReview = new ProductReview()
             {
                 Id = 4,
-                UserId = 4,
+                UserId = user.Id,
                 ProductId = 13,
                 Comment = "These purple gems are so cool. such a pretty design!",
                 DateAdded = DateTime.Now
@@ -777,7 +777,7 @@ namespace BackEndCapstone.Data
             ProductReview AquaQuartzHoopsReview = new ProductReview()
             {
                 Id = 5,
-                UserId = 3,
+                UserId = user.Id,
                 ProductId = 16,
                 Comment = "Didn't know quartz came in this color. Very cool!",
                 DateAdded = DateTime.Now
@@ -787,7 +787,7 @@ namespace BackEndCapstone.Data
             ProductReview SunstoneDangleEarringsReview = new ProductReview()
             {
                 Id = 6,
-                UserId = 5,
+                UserId = user.Id,
                 ProductId = 17,
                 Comment = "These sunstones are so pretty!!",
                 DateAdded = DateTime.Now
@@ -797,7 +797,7 @@ namespace BackEndCapstone.Data
             ProductReview BlueLaceGoldHoopsReview = new ProductReview()
             {
                 Id = 7,
-                UserId = 7,
+                UserId = user.Id,
                 ProductId = 12,
                 Comment = "These blue lace gems are awesome. Love the wire wrapping",
                 DateAdded = DateTime.Now
@@ -807,7 +807,7 @@ namespace BackEndCapstone.Data
             ProductReview FramedAutumnJasperReview1 = new ProductReview()
             {
                 Id = 8,
-                UserId = 4,
+                UserId = user.Id,
                 ProductId = 11,
                 Comment = "Interesting earrings!",
                 DateAdded = DateTime.Now
@@ -817,7 +817,7 @@ namespace BackEndCapstone.Data
             ProductReview FramedAutumnJasperReview2 = new ProductReview()
             {
                 Id = 9,
-                UserId = 6,
+                UserId = user.Id,
                 ProductId = 11,
                 Comment = "These bead frames are cool!",
                 DateAdded = DateTime.Now
@@ -827,7 +827,7 @@ namespace BackEndCapstone.Data
             ProductReview PinkOpalHoopsReview = new ProductReview()
             {
                 Id = 10,
-                UserId = 8,
+                UserId = user.Id,
                 ProductId = 10,
                 Comment = "Oh my god these are so pretty! I want a pair",
                 DateAdded = DateTime.Now
@@ -837,7 +837,7 @@ namespace BackEndCapstone.Data
             ProductReview AutumnJaspEarrings2Review = new ProductReview()
             {
                 Id = 11,
-                UserId = 3,
+                UserId = user.Id,
                 ProductId = 18,
                 Comment = "I like how you used the bronze cirle with the gemstones!",
                 DateAdded = DateTime.Now
@@ -847,7 +847,7 @@ namespace BackEndCapstone.Data
             ProductReview TreadedEarringReview1 = new ProductReview()
             {
                 Id = 12,
-                UserId = 3,
+                UserId = user.Id,
                 ProductId = 19,
                 Comment = "Threaded earrings are so pretty. do you have them in any other gemstone?",
                 DateAdded = DateTime.Now
@@ -857,7 +857,7 @@ namespace BackEndCapstone.Data
             ProductReview HameredGoldPearlReview1 = new ProductReview()
             {
                 Id = 13,
-                UserId = 8,
+                UserId = user.Id,
                 ProductId = 20,
                 Comment = "I love how you got the pearls to alternate up and down!",
                 DateAdded = DateTime.Now
@@ -867,7 +867,7 @@ namespace BackEndCapstone.Data
             ProductReview PearlNecklaceReview1 = new ProductReview()
             {
                 Id = 14,
-                UserId = 5,
+                UserId = user.Id,
                 ProductId = 22,
                 Comment = "These pearls are so pretty!",
                 DateAdded = DateTime.Now
@@ -877,7 +877,7 @@ namespace BackEndCapstone.Data
             ProductReview PearlNecklaceReview2 = new ProductReview()
             {
                 Id = 15,
-                UserId = 7,
+                UserId = user.Id,
                 ProductId = 22,
                 Comment = "Ordered this necklace and i absolutely love it. Would definitely recommend it!",
                 DateAdded = DateTime.Now
@@ -887,7 +887,7 @@ namespace BackEndCapstone.Data
             ProductReview BlackOnyxReview = new ProductReview()
             {
                 Id = 16,
-                UserId = 7,
+                UserId = user.Id,
                 ProductId = 2,
                 Comment = "I love the antique feel of these earrings!",
                 DateAdded = DateTime.Now
@@ -897,7 +897,7 @@ namespace BackEndCapstone.Data
             ProductReview LepidoliteHoopsReview = new ProductReview()
             {
                 Id = 17,
-                UserId = 8,
+                UserId = user.Id,
                 ProductId = 4,
                 Comment = "Nice wire wrapping!",
                 DateAdded = DateTime.Now
@@ -907,7 +907,7 @@ namespace BackEndCapstone.Data
             ProductReview CoralHoopsReview = new ProductReview()
             {
                 Id = 18,
-                UserId = 7,
+                UserId = user.Id,
                 ProductId = 2,
                 Comment = "I love the antique feel of these earrings!",
                 DateAdded = DateTime.Now
@@ -917,7 +917,7 @@ namespace BackEndCapstone.Data
             ProductReview BlackTasselReview = new ProductReview()
             {
                 Id = 19,
-                UserId = 6,
+                UserId = user.Id,
                 ProductId = 7,
                 Comment = "So cute and trendy!",
                 DateAdded = DateTime.Now
@@ -928,7 +928,7 @@ namespace BackEndCapstone.Data
             ProductReview LightWoodBraceletReview = new ProductReview()
             {
                 Id = 20,
-                UserId = 9,
+                UserId = user.Id,
                 ProductId = 25,
                 Comment = "Ordered a few of these and I love them.",
                 DateAdded = DateTime.Now
@@ -939,7 +939,7 @@ namespace BackEndCapstone.Data
             ProductReview DarkWoodBraceletReview = new ProductReview()
             {
                 Id = 21,
-                UserId = 9,
+                UserId = user.Id,
                 ProductId = 26,
                 Comment = "This bracelet is dope",
                 DateAdded = DateTime.Now
@@ -999,7 +999,7 @@ namespace BackEndCapstone.Data
             TutorialReview CrimpVideoReview = new TutorialReview()
             {
                 Id = 1,
-                UserId = 6,
+                UserId = user.Id,
                 TutorialId = 1,
                 Comment = "Thanks for posting. I struggled with making good looking crimps for so long. This video was very helpful.",
                 DateAdded = DateTime.Now
@@ -1010,7 +1010,7 @@ namespace BackEndCapstone.Data
             TutorialReview ToolsTutorialReview = new TutorialReview()
             {
                 Id = 2,
-                UserId = 8,
+                UserId = user.Id,
                 TutorialId = 3,
                 Comment = "Glad you posted this. I just started making jewelry and wasn't sure which tools to buy! thanks again.",
                 DateAdded = DateTime.Now
@@ -1021,7 +1021,7 @@ namespace BackEndCapstone.Data
             TutorialReview WireWrappingEarringReview = new TutorialReview()
             {
                 Id = 3,
-                UserId = 4,
+                UserId = user.Id,
                 TutorialId = 2,
                 Comment = "My wire wrapping always looks so ugly because i was doing it wrong. Glad you posted this",
                 DateAdded = DateTime.Now
@@ -1031,7 +1031,7 @@ namespace BackEndCapstone.Data
             TutorialReview WireWrappingEarringReview2 = new TutorialReview()
             {
                 Id = 4,
-                UserId = 7,
+                UserId = user.Id,
                 TutorialId = 2,
                 Comment = "My wire wrapping looks so much better after watching this video! thank you",
                 DateAdded = DateTime.Now
@@ -1041,7 +1041,7 @@ namespace BackEndCapstone.Data
             TutorialReview BeadCapTutorialReview = new TutorialReview()
             {
                 Id = 5,
-                UserId = 3,
+                UserId = user.Id,
                 TutorialId = 4,
                 Comment = "I've had a hard time with bead caps for a while, hoping that after seeing this video it wont be as difficult",
                 DateAdded = DateTime.Now
