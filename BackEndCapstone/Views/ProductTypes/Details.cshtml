@@ -21,15 +21,14 @@
         <tbody>
             @foreach (var item in Model.Products)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ImagePath)
-                    </td>
-
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePath)
+                </td>
+            </tr>
             }
         <td>
             <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

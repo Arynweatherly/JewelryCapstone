@@ -16,12 +16,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
+        <img class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -41,13 +36,13 @@
             @Html.DisplayFor(model => model.UserId)
         </dd>*@
 
-        <dt class="col-sm-2">
+        @*<dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ProductType)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ProductType.Category)
-        </dd>
-        <img class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+        </dd>*@
+
     </dl>
 </div>
 <div>
