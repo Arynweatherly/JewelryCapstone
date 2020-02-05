@@ -9,16 +9,51 @@
 <div>
     <h4>ProductType</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>
+
+                </tr>
+            }
+        <td>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </td>
+        </tbody>
+    </table>
+
+
+
+
+        @*<div>
+            <h4>ProductType</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>*@

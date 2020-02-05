@@ -40,6 +40,7 @@ namespace BackEndCapstone.Controllers
             }
 
             var productType = await _context.ProductType
+                 .Include(p => p.Products)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (productType == null)
             {
