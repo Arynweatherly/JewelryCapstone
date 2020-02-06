@@ -954,6 +954,7 @@ namespace BackEndCapstone.Data
             Tutorial CrimpTutorial = new Tutorial()
             {
                 Id = 1,
+                UserId = user.Id,
                 Title = "How to use crimping pliers",
                 VideoPath = "CrimpTutorial.mp4",
                 Description = "First feed one crimp beed onto the wire and then loop it through a clasp or a jump ringand then back through the crimp. PLace the crimp in the OUTER jaw of the crimp tool and make one firm compression. Then place the crimp bead into the crescent-shaped groove of the crimp tool and firmly compress. String the remaining beads onto the wire.",
@@ -965,6 +966,7 @@ namespace BackEndCapstone.Data
             Tutorial WireWrappedLoopEarringsTutorial = new Tutorial()
             {
                 Id = 2,
+                UserId = user.Id,
                 Title = "How to wire wrap loops for earrings",
                 VideoPath = "WireWrappedLoopForEarrings.mp4",
                 Description = "In this video, learn how to make a wrapped wire loop for jewelry making. This basic technique is used when putting a bead on a head pin or eye pin as a dangle or a link, and is more durable than a simple wire loop.",
@@ -975,6 +977,7 @@ namespace BackEndCapstone.Data
             Tutorial Tools101 = new Tutorial()
             {
                 Id = 3,
+                UserId = user.Id,
                 Title = "Tools for beginners",
                 VideoPath = "Tools101.mp4",
                 Description = "This video shows you how to use all the essential jewelry making tools for beginners.",
@@ -985,6 +988,7 @@ namespace BackEndCapstone.Data
             Tutorial WireBeadCap = new Tutorial()
             {
                 Id = 4,
+                UserId = user.Id,
                 Title = "How to Make a Wire Wrapped Bead Cap",
                 VideoPath = "WireBeadCaps.mp4",
                 Description = "Learn how to make that trickey wire wrapped bead cap with this video.",
