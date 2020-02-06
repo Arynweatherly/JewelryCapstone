@@ -72,13 +72,13 @@ namespace BackEndCapstone.Controllers
         }
 
         // GET: Products/Create
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             var viewModel = new ProductCreateViewModel();
             var user = await GetCurrentUserAsync();
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            return View(viewModel);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category");
+        
+            return View();
         }
 
         // POST: Products/Create
@@ -115,7 +115,7 @@ namespace BackEndCapstone.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", viewModel.ProductTypeId);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", viewModel.ProductTypeId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", viewModel.UserId);
             return View(viewModel);
 
@@ -135,6 +135,8 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
             return View(product);
         }
 
@@ -143,7 +145,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] Product product, IFormFile file)
         {
             if (id != product.Id)
             {
@@ -151,12 +153,22 @@ namespace BackEndCapstone.Controllers
             }
             ModelState.Remove("User");
             ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
                 var user = await GetCurrentUserAsync();
-
                 try
                 {
+                    if (product.File != null && product.File.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(product.File.FileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                        using (var fileSteam = new FileStream(filePath, FileMode.Create)) //using filestream to get the actual path 
+                        {
+                            await product.File.CopyToAsync(fileSteam);
+                        }
+                        product.ImagePath = fileName;
+                    }
                     product.UserId = user.Id;
                     _context.Update(product);
                     await _context.SaveChangesAsync();
@@ -174,6 +186,8 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
             return View(product);
         }
 

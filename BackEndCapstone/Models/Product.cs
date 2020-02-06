@@ -10,6 +10,7 @@ namespace BackEndCapstone.Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
 
@@ -19,14 +20,16 @@ namespace BackEndCapstone.Models
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public string UserId { get; set; }
-        public int ProductTypeId { get; set; }
-
+ 
         [Required]
         public ApplicationUser User { get; set; }
 
         [Required(ErrorMessage = "Error: Must choose a product category")]
         [Display(Name = "Product Category")]
+        public int ProductTypeId { get; set; }
 
+
+        [Display(Name = "Product Type")]
         public ProductType ProductType { get; set; }
 
     }

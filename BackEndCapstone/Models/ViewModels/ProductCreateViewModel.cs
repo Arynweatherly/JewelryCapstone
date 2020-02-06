@@ -27,9 +27,6 @@ namespace BackEndCapstone.Models.ViewModels
         [StringLength(55, ErrorMessage = "Please shorten the product title to 55 characters")]
         public string Title { get; set; }
 
-     
-
-        
 
         [Required]
         public string UserId { get; set; }
