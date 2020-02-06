@@ -26,7 +26,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImagePath)
+                <img style="max-height: 90px; min-height: 80px;" class="img-responsive" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
                 </td>
             </tr>
             }
