@@ -8,50 +8,32 @@ using Microsoft.EntityFrameworkCore;
 using BackEndCapstone.Data;
 using BackEndCapstone.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 using BackEndCapstone.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
 namespace BackEndCapstone.Controllers
 {
-    [Authorize]
-    public class ProductsController : Controller
+    public class GemstonesController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public ProductsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public GemstonesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
+
         }
 
-        // GET: Products
-        public async Task<IActionResult> Index(string searchString) 
-
+        // GET: Gemstones
+        public async Task<IActionResult> Index()
         {
-            var user = await GetCurrentUserAsync();
-            if (searchString == null)
-            {
-                var model = _context.Product
-                    .Include(p => p.ProductType)
-                    .Include(prop => prop.User);
-                return View(await model.ToListAsync());
-            }
-            else
-            {
-                var model = _context.Product
-                    .Include(p => p.ProductType)
-                    .Include(p => p.User)
-                        .Where(p => p.Title.Contains(searchString) || p.ProductType.Category.Contains(searchString) );
-                return View(await model.ToListAsync());
-            }
-         
+            return View(await _context.Gemstone.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Gemstones/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -59,44 +41,41 @@ namespace BackEndCapstone.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
-                   .Include(p => p.ProductType)
-                .Include(p => p.User)
+            var gemstone = await _context.Gemstone
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (gemstone == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(gemstone);
         }
 
-        // GET: Products/Create
+        // GET: Gemstones/Create
         public async Task<IActionResult> CreateAsync()
         {
-            var viewModel = new ProductCreateViewModel();
+            var viewModel = new GemstoneCreateViewModel();
             var user = await GetCurrentUserAsync();
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category");
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
             return View(viewModel);
         }
 
-        // POST: Products/Create
+        // POST: Gemstones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] ProductCreateViewModel viewModel, IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,Description, File")] GemstoneCreateViewModel viewModel, IFormFile image)
         {
             ModelState.Remove("User");
             ModelState.Remove("UserId");
             var user = await GetCurrentUserAsync();
             if (ModelState.IsValid)
             {
-                var product = new Product()
+                var gemstone = new Gemstone()
+
                 {
                     Title = viewModel.Title,
-                    ProductTypeId = viewModel.ProductTypeId,
                     Description = viewModel.Description,
                 };
                 if (viewModel.File != null && viewModel.File.Length > 0)
@@ -107,22 +86,21 @@ namespace BackEndCapstone.Controllers
                     {
                         await viewModel.File.CopyToAsync(fileSteam);
                     }
-                    product.ImagePath = fileName;
+                    gemstone.ImagePath = fileName;
                 }
-                product.UserId = user.Id;
-                _context.Add(product);
+                gemstone.UserId = user.Id;
+                _context.Add(gemstone);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", viewModel.ProductTypeId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", viewModel.UserId);
             return View(viewModel);
 
+            
 
-        }
+            }
 
-        // GET: Products/Edit/5
+        // GET: Gemstones/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -130,36 +108,40 @@ namespace BackEndCapstone.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
+            var gemstone = await _context.Gemstone.FindAsync(id);
+            if (gemstone == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(gemstone);
         }
 
-        // POST: Products/Edit/5
+        // POST: Gemstones/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description")] Gemstone gemstone)
         {
-            if (id != product.Id)
+            if (id != gemstone.Id)
             {
                 return NotFound();
             }
-
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
                 try
                 {
-                    _context.Update(product);
+                    gemstone.UserId = user.Id;
+                    _context.Update(gemstone);
                     await _context.SaveChangesAsync();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!GemstoneExists(gemstone.Id))
                     {
                         return NotFound();
                     }
@@ -170,10 +152,10 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(gemstone);
         }
 
-        // GET: Products/Delete/5
+        // GET: Gemstones/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -181,30 +163,30 @@ namespace BackEndCapstone.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var gemstone = await _context.Gemstone
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (gemstone == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(gemstone);
         }
 
-        // POST: Products/Delete/5
+        // POST: Gemstones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
+            var gemstone = await _context.Gemstone.FindAsync(id);
+            _context.Gemstone.Remove(gemstone);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool GemstoneExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Gemstone.Any(e => e.Id == id);
         }
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 

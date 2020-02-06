@@ -6,20 +6,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BackEndCapstone.Models
+namespace BackEndCapstone.Models.ViewModels
 {
-    public class Gemstone
+    public class GemstoneCreateViewModel
     {
-        public int Id { get; set; }
+        public IFormFile File { get; set; }
+        [Key]
+        public int GemstoneId { get; set; }
+
+       
+     
+
+        [Required]
+        [StringLength(255)]
+        public string Description { get; set; }
+
         public string Title { get; set; }
 
-        public string ImagePath { get; set; }
-        [NotMapped]
-        public IFormFile File { get; set; }
 
+
+        [Required]
         public string UserId { get; set; }
-
-        public string Description { get; set; }
+        public string ImagePath { get; set; }
 
         [Required]
         public ApplicationUser User { get; set; }
