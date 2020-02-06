@@ -4,33 +4,28 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Gemstone Details:</h1>
 
 <div>
-    <h4>Gemstone</h4>
+ 
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
+
+        <dt class="col-sm-4">
             @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-        <dt class = "col-sm-2">
+        <img class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+
+ 
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
     <a asp-action="Index">Back to List</a>
 </div>
