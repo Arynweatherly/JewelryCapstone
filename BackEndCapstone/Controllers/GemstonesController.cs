@@ -65,7 +65,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,Description, File")] GemstoneCreateViewModel viewModel, IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,Description,File")] GemstoneCreateViewModel viewModel, IFormFile image)
         {
             ModelState.Remove("User");
             ModelState.Remove("UserId");
@@ -113,6 +113,7 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", gemstone.UserId);
             return View(gemstone);
         }
 
@@ -121,7 +122,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description")] Gemstone gemstone)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,UserId,ImagePath,Description,File")] Gemstone gemstone, IFormFile file )
         {
             if (id != gemstone.Id)
             {
@@ -134,10 +135,19 @@ namespace BackEndCapstone.Controllers
                 var user = await GetCurrentUserAsync();
                 try
                 {
+                    if (gemstone.File != null && gemstone.File.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(gemstone.File.FileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                        using (var fileSteam = new FileStream(filePath, FileMode.Create)) //using filestream to get the actual path 
+                        {
+                            await gemstone.File.CopyToAsync(fileSteam);
+                        }
+                        gemstone.ImagePath = fileName;
+                    }
                     gemstone.UserId = user.Id;
                     _context.Update(gemstone);
                     await _context.SaveChangesAsync();
-
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -152,6 +162,7 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", gemstone.UserId);
             return View(gemstone);
         }
 
