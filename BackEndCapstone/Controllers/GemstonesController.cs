@@ -127,13 +127,17 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
                 try
                 {
+                    gemstone.UserId = user.Id;
                     _context.Update(gemstone);
                     await _context.SaveChangesAsync();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
