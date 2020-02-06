@@ -143,17 +143,21 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId")] Product product)
         {
             if (id != product.Id)
             {
                 return NotFound();
             }
-
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
+
                 try
                 {
+                    product.UserId = user.Id;
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
