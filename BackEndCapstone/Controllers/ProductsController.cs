@@ -135,8 +135,7 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", product.ProductTypeId);
             return View(product);
         }
 
@@ -186,8 +185,8 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
+            //ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", product.ProductTypeId);
+            //ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
             return View(product);
         }
 
