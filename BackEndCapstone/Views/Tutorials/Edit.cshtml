@@ -29,7 +29,10 @@
                 <label asp-for="File" class="control-label"></label>
                 <input asp-for="File" type="file" class="form-control" />
                 <span asp-validation-for="File" class="text-danger"></span>
-                <source src="@Url.Content("~/videos/" + Model.VideoPath)" type="video/mp4">
+                <video width="320" height="240" controls autoplay="autoplay">
+
+                    <source src="@Url.Content("~/videos/" + Model.VideoPath)" type="video/mp4">
+                </video>
 
 
             </div>
