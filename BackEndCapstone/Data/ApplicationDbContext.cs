@@ -404,7 +404,6 @@ namespace BackEndCapstone.Data
                 ProductTypeId = 1,
                 Description = "Rustic triangle shaped copper earrings with large, round calcite gemstone.",
                
-         
             };
             modelBuilder.Entity<Product>().HasData(CalciteTriangleEarrings);
 

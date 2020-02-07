@@ -120,17 +120,30 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,VideoPath,Description,DateAdded,ProductId")] Tutorial tutorial)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,VideoPath,Description,DateAdded,ProductId, File")] Tutorial tutorial, IFormFile file)
         {
             if (id != tutorial.Id)
             {
                 return NotFound();
             }
-
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
                 try
                 {
+                    if (tutorial.File != null && tutorial.File.Length > 0)
+                    {
+                        var fileName = Path.GetFileName(tutorial.File.FileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                        using (var fileSteam = new FileStream(filePath, FileMode.Create)) //using filestream to get the actual path 
+                        {
+                            await tutorial.File.CopyToAsync(fileSteam);
+                        }
+                        tutorial.VideoPath = fileName;
+                    }
+                    tutorial.UserId = user.Id;
                     _context.Update(tutorial);
                     await _context.SaveChangesAsync();
                 }
