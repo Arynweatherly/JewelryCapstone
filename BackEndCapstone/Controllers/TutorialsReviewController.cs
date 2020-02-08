@@ -9,6 +9,7 @@ using BackEndCapstone.Data;
 using BackEndCapstone.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using BackEndCapstone.Models.ViewModels;
 
 namespace BackEndCapstone.Controllers
 {
@@ -40,7 +41,7 @@ namespace BackEndCapstone.Controllers
                 var viewModel = new TutorialReviewViewModel
                 {
                     Tutorial = tutorial,
-                    TutorialReivews = tutorialReviews
+                    TutorialReviews = tutorialReviews
                 };
                 return View(viewModel);
             }
@@ -84,13 +85,21 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,TutorialId,Comment,DateAdded")] TutorialReview tutorialReview)
+        public async Task<IActionResult> Create(int tutorialId, TutorialReviewViewModel viewModel)
         {
+            var user = await GetCurrentUserAsync();
+            var tutorialReview = new TutorialReview
+            {
+                TutorialId = tutorialId,
+                Comment = viewModel.comment,
+                UserId = user.Id
+
+            };
             if (ModelState.IsValid)
             {
                 _context.Add(tutorialReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { tutorialId });
             }
             return View(tutorialReview);
         }
@@ -179,5 +188,7 @@ namespace BackEndCapstone.Controllers
         {
             return _context.TutorialReview.Any(e => e.Id == id);
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
     }
 }

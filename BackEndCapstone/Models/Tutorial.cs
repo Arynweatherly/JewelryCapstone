@@ -24,7 +24,7 @@ namespace BackEndCapstone.Models
         public ApplicationUser User { get; set; }
 
         public string UserId { get; set; }
-
+        public List<TutorialReview> TutorialReviews { get; set; }
 
     }
 }
