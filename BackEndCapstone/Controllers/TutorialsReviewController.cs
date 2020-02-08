@@ -23,14 +23,36 @@ namespace BackEndCapstone.Controllers
         public TutorialsReviewController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
-             _userManager = userManager;
+                _userManager = userManager;
 
         }
 
         // GET: TutorialsReview
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int tutorialId)
         {
-            return View(await _context.TutorialReview.ToListAsync());
+            var tutorialReviews = await _context.TutorialReview.Where(r => r.TutorialId == tutorialId).ToListAsync();
+            var tutorial = _context.Tutorial.FirstOrDefault(t => t.Id == tutorialId);
+            ViewBag.TutorialId = tutorialId;
+            ViewBag.Tutorial = tutorial;
+            ViewBag.TutorialVideo = tutorial.VideoPath;
+            if (tutorialReviews.Count() > 0)
+            {
+                var viewModel = new TutorialReviewViewModel
+                {
+                    Tutorial = tutorial,
+                    TutorialReivews = tutorialReviews
+                };
+                return View(viewModel);
+            }
+            else
+            {
+                var viewModel = new TutorialReviewViewModel
+                {
+                    Tutorial = tutorial
+                };
+                return View("noReviews");
+            }
+ 
         }
 
         // GET: TutorialsReview/Details/5
