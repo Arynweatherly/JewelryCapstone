@@ -9,6 +9,7 @@ using BackEndCapstone.Data;
 using BackEndCapstone.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using BackEndCapstone.Models.ViewModels;
 
 namespace BackEndCapstone.Controllers
 {
@@ -23,14 +24,36 @@ namespace BackEndCapstone.Controllers
         public TutorialsReviewController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
-             _userManager = userManager;
+                _userManager = userManager;
 
         }
 
         // GET: TutorialsReview
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int tutorialId)
         {
-            return View(await _context.TutorialReview.ToListAsync());
+            var tutorialReviews = await _context.TutorialReview.Where(r => r.TutorialId == tutorialId).ToListAsync();
+            var tutorial = _context.Tutorial.FirstOrDefault(t => t.Id == tutorialId);
+            ViewBag.TutorialId = tutorialId;
+            ViewBag.Tutorial = tutorial;
+            ViewBag.TutorialVideo = tutorial.VideoPath;
+            if (tutorialReviews.Count() > 0)
+            {
+                var viewModel = new TutorialReviewViewModel
+                {
+                    Tutorial = tutorial,
+                    TutorialReviews = tutorialReviews
+                };
+                return View(viewModel);
+            }
+            else
+            {
+                var viewModel = new TutorialReviewViewModel
+                {
+                    Tutorial = tutorial
+                };
+                return View("noReviews");
+            }
+ 
         }
 
         // GET: TutorialsReview/Details/5
@@ -62,13 +85,21 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,TutorialId,Comment,DateAdded")] TutorialReview tutorialReview)
+        public async Task<IActionResult> Create(int tutorialId, TutorialReviewViewModel viewModel)
         {
+            var user = await GetCurrentUserAsync();
+            var tutorialReview = new TutorialReview
+            {
+                TutorialId = tutorialId,
+                Comment = viewModel.comment,
+                UserId = user.Id
+
+            };
             if (ModelState.IsValid)
             {
                 _context.Add(tutorialReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { tutorialId });
             }
             return View(tutorialReview);
         }
@@ -157,5 +188,7 @@ namespace BackEndCapstone.Controllers
         {
             return _context.TutorialReview.Any(e => e.Id == id);
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
     }
 }
