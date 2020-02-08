@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BackEndCapstone.Data;
 using BackEndCapstone.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BackEndCapstone.Controllers
 {
+    [Authorize]
+
     public class TutorialsReviewController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public TutorialsReviewController(ApplicationDbContext context)
+
+        public TutorialsReviewController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+             _userManager = userManager;
+
         }
 
         // GET: TutorialsReview
