@@ -13,7 +13,7 @@ using BackEndCapstone.Models.ViewModels;
 
 namespace BackEndCapstone.Controllers
 {
-    [Authorize]
+
 
     public class TutorialsReviewController : Controller
     {

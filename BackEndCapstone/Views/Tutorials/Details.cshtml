@@ -30,6 +30,7 @@
             @Html.DisplayFor(model => model.DateAdded)
         </dd>
 
+
         <dt class="order-sm-10">
             <form asp-action="Index" asp-controller="TutorialReviews" asp-route-breweryId="@Model.Id">
                 <button>View Comments</button>
@@ -38,6 +39,21 @@
 
 
     </dl>
+</div>
+<div>
+
+    <h4>Comments</h4>
+
+    <dl class="row">
+        @foreach (var item in Model.TutorialReviews)
+        {
+
+            @Html.DisplayFor(modelItem => item.Comment)
+            <br />
+            <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Comments">Details</a>
+
+        }
+        </d1>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
