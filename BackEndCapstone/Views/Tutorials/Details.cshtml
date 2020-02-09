@@ -51,19 +51,20 @@
 
 @*<div>
 
-    <h4>Comments</h4>
+        <h4>Comments</h4>
 
-    <dl class="row">
-        @foreach (var item in Model.TutorialReviews)
-        {
+        <dl class="row">
+            @foreach (var item in Model.TutorialReviews)
+            {
 
-            @Html.DisplayFor(modelItem => item.TutorialReview)
-            <br />
-            <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Comments">Details</a>
+                @Html.DisplayFor(modelItem => item.TutorialReview)
+                <br />
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Comments">Details</a>
 
-        }
-        </d1>
-</div>*@
+            }
+            </d1>
+    </div>*@
+<a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReview">Leave A Comment!</a> |
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
