@@ -32,5 +32,7 @@ namespace BackEndCapstone.Models
         [Display(Name = "Product Type")]
         public ProductType ProductType { get; set; }
 
+        public List<ProductReview> ProductReviews { get; set; }
+
     }
 }

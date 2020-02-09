@@ -16,14 +16,18 @@ namespace BackEndCapstone.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         public ProductReviewsController(ApplicationDbContext context)
+
         {
             _context = context;
-            _userManager = _userManager;
+            
+
         }
 
         // GET: ProductReviews
         public async Task<IActionResult> Index()
         {
+            var model = _context.ProductReview
+                .Include(pr => pr.Product);
             return View(await _context.ProductReview.ToListAsync());
         }
 
@@ -36,6 +40,7 @@ namespace BackEndCapstone.Controllers
             }
 
             var productReview = await _context.ProductReview
+                .Include(pr => pr.Product)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (productReview == null)
             {
