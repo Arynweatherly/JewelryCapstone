@@ -43,6 +43,8 @@ namespace BackEndCapstone.Controllers
             }
 
             var tutorial = await _context.Tutorial
+                 .Include(t => t.TutorialReviews)
+
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tutorial == null)
             {

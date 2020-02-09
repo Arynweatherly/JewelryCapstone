@@ -21,39 +21,18 @@ namespace BackEndCapstone.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public TutorialsReviewController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public TutorialsReviewController(ApplicationDbContext context)
         {
             _context = context;
-                _userManager = userManager;
 
         }
 
         // GET: TutorialsReview
-        public async Task<IActionResult> Index(int tutorialId)
+        public async Task<IActionResult> Index()
         {
-            var tutorialReviews = await _context.TutorialReview.Where(r => r.TutorialId == tutorialId).ToListAsync();
-            var tutorial = _context.Tutorial.FirstOrDefault(t => t.Id == tutorialId);
-            ViewBag.TutorialId = tutorialId;
-            ViewBag.Tutorial = tutorial;
-            ViewBag.TutorialVideo = tutorial.VideoPath;
-            if (tutorialReviews.Count() > 0)
-            {
-                var viewModel = new TutorialReviewViewModel
-                {
-                    Tutorial = tutorial,
-                    TutorialReviews = tutorialReviews
-                };
-                return View(viewModel);
-            }
-            else
-            {
-                var viewModel = new TutorialReviewViewModel
-                {
-                    Tutorial = tutorial
-                };
-                return View("noReviews");
-            }
- 
+            var model = _context.TutorialReview
+                .Include(tr => tr.Tutorial);
+            return View(await _context.TutorialReview.ToListAsync());
         }
 
         // GET: TutorialsReview/Details/5
@@ -65,6 +44,7 @@ namespace BackEndCapstone.Controllers
             }
 
             var tutorialReview = await _context.TutorialReview
+                .Include(tr => tr.Tutorial)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tutorialReview == null)
             {
@@ -73,6 +53,7 @@ namespace BackEndCapstone.Controllers
 
             return View(tutorialReview);
         }
+
 
         // GET: TutorialsReview/Create
         public IActionResult Create()
