@@ -26,13 +26,20 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                <img style="max-height: 90px; min-height: 80px;" class="img-responsive" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
+                    <img style="max-height: 90px; min-height: 80px;" class="img-responsive" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
                 </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@Model.Id" asp-controller="Products">Details</a>
+                </td>
+
+              
             </tr>
             }
         <td>
-           
+
             <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+
             <a asp-action="Index">Back to List</a>
         </td>
         </tbody>
