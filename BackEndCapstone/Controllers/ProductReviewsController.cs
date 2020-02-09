@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BackEndCapstone.Data;
 using BackEndCapstone.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BackEndCapstone.Controllers
 {
     public class ProductReviewsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private readonly UserManager<ApplicationUser> _userManager;
         public ProductReviewsController(ApplicationDbContext context)
         {
             _context = context;
+            _userManager = _userManager;
         }
 
         // GET: ProductReviews
