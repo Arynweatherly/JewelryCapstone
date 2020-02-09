@@ -12,5 +12,6 @@ namespace BackEndCapstone.Models
         public int ProductId { get; set; }
         public string Comment { get; set; }
         public DateTime DateAdded { get; set; }
+        public Product Product { get; set; }
     }
 }
