@@ -40,7 +40,7 @@
 
     </dl>
 </div>
-<div>
+@*<div>
 
     <h4>Comments</h4>
 
@@ -48,13 +48,13 @@
         @foreach (var item in Model.TutorialReviews)
         {
 
-            @Html.DisplayFor(modelItem => item.Comment)
+            @Html.DisplayFor(modelItem => item.TutorialReview)
             <br />
             <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Comments">Details</a>
 
         }
         </d1>
-</div>
+</div>*@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
