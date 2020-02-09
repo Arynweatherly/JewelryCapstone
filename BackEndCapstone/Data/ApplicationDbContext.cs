@@ -375,6 +375,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 1,
                 Category = "Earrings",
+                ImagePath = "earrings.jpg",
             };
             modelBuilder.Entity<ProductType>().HasData(Earring);
 
@@ -382,6 +383,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 2,
                 Category = "Necklaces",
+                ImagePath = "necklaceHome.jpg",
             };
             modelBuilder.Entity<ProductType>().HasData(Necklace);
 
@@ -389,6 +391,7 @@ namespace BackEndCapstone.Data
             {
                 Id = 3,
                 Category = "Bracelets",
+                ImagePath = "braceletsHome.jpg",
             };
             modelBuilder.Entity<ProductType>().HasData(Bracelet);
 
