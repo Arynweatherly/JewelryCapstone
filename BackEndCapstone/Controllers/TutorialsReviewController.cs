@@ -56,35 +56,41 @@ namespace BackEndCapstone.Controllers
 
 
         // GET: TutorialsReview/Create
-        public IActionResult Create()
+        [HttpGet("TutorialsReview/Create/{tutorialId}")]
+
+        public async Task<IActionResult> Create(int tutorialId)
         {
+            if (tutorialId == null)
+            {
+                var user = await GetCurrentUserAsync();
+            }
             return View();
         }
 
         // POST: TutorialsReview/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("TutorialsReview/Create/{tutorialId}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int tutorialId, TutorialReviewViewModel viewModel)
+        public async Task<IActionResult> Create([FromRoute] int tutorialId, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
         {
             var user = await GetCurrentUserAsync();
-            var tutorialReview = new TutorialReview
+            tutorialReview.UserId = user.Id;
+            if (tutorialId != null)
             {
-                TutorialId = tutorialId,
-                Comment = viewModel.comment,
-                UserId = user.Id
+                tutorialReview.TutorialId = tutorialId;
 
-            };
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(tutorialReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", new { tutorialId });
+                return RedirectToAction("Details", "Tutorials", new { id = tutorialId });
             }
+            ViewData["TutorialId"] = new SelectList(_context.Tutorial,
+         "Id", "Title", tutorialReview.TutorialId);
             return View(tutorialReview);
         }
-
         // GET: TutorialsReview/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
