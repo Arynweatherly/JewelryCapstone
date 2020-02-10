@@ -23,5 +23,6 @@ namespace BackEndCapstone.Models
 
         [Required]
         public ApplicationUser User { get; set; }
+
     }
 }

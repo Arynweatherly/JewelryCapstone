@@ -71,7 +71,7 @@ namespace BackEndCapstone.Controllers
         // POST: TutorialsReview/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("TutorialsReview/Create/{Id}")]
+        [HttpPost("TutorialsReview/Create/{tutorialId}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int id, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
 

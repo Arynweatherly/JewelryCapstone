@@ -61,8 +61,11 @@ namespace BackEndCapstone.Controllers
 
             var product = await _context.Product
                    .Include(p => p.ProductType)
-                .Include(p => p.User)
-                .Include(p => p.ProductReviews)
+                   .Include(p => p.ProductReviews)
+                   .Include(p => p.ProductGemstones)
+                   .ThenInclude(pg => pg.Gemstone)
+
+                .Include(p => p.User.FirstName)
 
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
