@@ -138,7 +138,7 @@ namespace BackEndCapstone.Controllers
                     if (tutorial.File != null && tutorial.File.Length > 0)
                     {
                         var fileName = Path.GetFileName(tutorial.File.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\videos", fileName);
                         using (var fileSteam = new FileStream(filePath, FileMode.Create)) //using filestream to get the actual path 
                         {
                             await tutorial.File.CopyToAsync(fileSteam);

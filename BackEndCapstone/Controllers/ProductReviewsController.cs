@@ -15,11 +15,12 @@ namespace BackEndCapstone.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        public ProductReviewsController(ApplicationDbContext context)
+        public ProductReviewsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
 
         {
             _context = context;
-            
+
+            _userManager = userManager;
 
         }
 
@@ -51,24 +52,40 @@ namespace BackEndCapstone.Controllers
         }
 
         // GET: ProductReviews/Create
+
+
         public IActionResult Create()
-        {
-            return View();
+
+            {
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
+                return View();
+        
         }
 
         // POST: ProductReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("productReviews/Create/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserId,ProductId,Comment,DateAdded")] ProductReview productReview)
-        {
+        public async Task<IActionResult> Create(int id, [Bind("Comment,UserId,ProductId")] ProductReview productReview)
+
+                {
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+            productReview.ProductId = id;
+            var user = await GetCurrentUserAsync();
+
             if (ModelState.IsValid)
             {
+                productReview.UserId = user.Id;
+
                 _context.Add(productReview);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["ProductIs"] = new SelectList(_context.Product, "Id", "Id", productReview.ProductId);
             return View(productReview);
         }
 
@@ -156,5 +173,7 @@ namespace BackEndCapstone.Controllers
         {
             return _context.ProductReview.Any(e => e.Id == id);
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
     }
 }
