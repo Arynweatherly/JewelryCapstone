@@ -170,6 +170,10 @@ namespace BackEndCapstone.Controllers
                         }
                         product.ImagePath = fileName;
                     }
+                    else
+                    {
+                        product.ImagePath = _context.Product.AsNoTracking().Single<Product>(p => p.Id == product.Id).ImagePath;
+                    }
                     product.UserId = user.Id;
                     _context.Update(product);
                     await _context.SaveChangesAsync();
