@@ -65,7 +65,6 @@ namespace BackEndCapstone.Controllers
                    .Include(p => p.ProductGemstones)
                    .ThenInclude(pg => pg.Gemstone)
 
-                .Include(p => p.User.FirstName)
 
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -82,7 +81,11 @@ namespace BackEndCapstone.Controllers
             var viewModel = new ProductCreateViewModel();
             var user = await GetCurrentUserAsync();
             ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category");
-        
+            ViewData["Gemstone"] = new SelectList(_context.Gemstone, "Id", "Title");
+            ViewData["ProductGemstone"] = new SelectList(_context.ProductGemstone, "GemstoneId", "Title");
+
+
+
             return View();
         }
 
@@ -91,7 +94,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] ProductCreateViewModel viewModel, IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath,GemstoneIds,Description,DateAdded,UserId,ProductTypeId,File")] ProductCreateViewModel viewModel, IFormFile image)
         {
             ModelState.Remove("User");
             ModelState.Remove("UserId");
@@ -103,6 +106,9 @@ namespace BackEndCapstone.Controllers
                     Title = viewModel.Title,
                     ProductTypeId = viewModel.ProductTypeId,
                     Description = viewModel.Description,
+                    ProductGemstones = viewModel.ProductGemstones
+
+
                 };
                 if (viewModel.File != null && viewModel.File.Length > 0)
                 {
@@ -115,12 +121,24 @@ namespace BackEndCapstone.Controllers
                     product.ImagePath = fileName;
                 }
                 product.UserId = user.Id;
+                product.ProductGemstones = viewModel.GemstoneIds.Select(gemstoneId => new ProductGemstone
+                {
+                    ProductId = product.Id,
+                    GemstoneId = gemstoneId
+                }).ToList();
+                foreach(var gem in product.ProductGemstones)
+                {
+                    _context.Add(gem);
+                }
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+         
                 return RedirectToAction(nameof(Index));
             }
 
             ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", viewModel.ProductTypeId);
+            ViewData["ProductGemstone"] = new SelectList(_context.ProductGemstone, "GemstoneId", "Title", viewModel.ProductGemstones);
+
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", viewModel.UserId);
             return View(viewModel);
 

@@ -36,6 +36,7 @@ namespace BackEndCapstone.Models.ViewModels
 
         [Display(Name = "Gemstones")]
 
+        public Gemstone Gemstone { get; set; }
         public List<int> GemstoneIds { get; set; }
         public List<ProductGemstone> ProductGemstones { get; set; }
 
