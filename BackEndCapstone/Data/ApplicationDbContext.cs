@@ -373,7 +373,7 @@ namespace BackEndCapstone.Data
 
             ProductType Earring = new ProductType()
             {
-                Id = 1,
+                ProductTypeId = 1,
                 Category = "Earrings",
                 ImagePath = "earrings.jpg",
             };
@@ -381,7 +381,7 @@ namespace BackEndCapstone.Data
 
             ProductType Necklace = new ProductType()
             {
-                Id = 2,
+                ProductTypeId = 2,
                 Category = "Necklaces",
                 ImagePath = "necklaceHome.jpg",
             };
@@ -389,7 +389,7 @@ namespace BackEndCapstone.Data
 
             ProductType Bracelet = new ProductType()
             {
-                Id = 3,
+                ProductTypeId = 3,
                 Category = "Bracelets",
                 ImagePath = "braceletsHome.jpg",
             };

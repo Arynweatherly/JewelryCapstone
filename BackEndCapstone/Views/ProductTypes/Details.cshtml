@@ -29,7 +29,7 @@
                     <img style="max-height: 90px; min-height: 80px;" class="img-responsive" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@Model.Id" asp-controller="Products">Details</a>
+                    @*<a asp-action="Details" asp-route-id="@Model.Product.Id" asp-controller="Products">Details</a>*@
                 </td>
 
               
@@ -37,8 +37,8 @@
             }
         <td>
 
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            <a asp-action="Edit" asp-route-id="@Model.ProductTypeId">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.ProductTypeId">Delete</a>
 
             <a asp-action="Index">Back to List</a>
         </td>

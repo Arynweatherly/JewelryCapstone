@@ -11,6 +11,7 @@ namespace BackEndCapstone.Models.ViewModels
     {
         public string Category { get; set; }
 
+ 
         public IFormFile File { get; set; }
 
         [Required]

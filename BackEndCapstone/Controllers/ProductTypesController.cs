@@ -41,7 +41,7 @@ namespace BackEndCapstone.Controllers
 
             var productType = await _context.ProductType
                  .Include(p => p.Products)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProductTypeId == id);
             if (productType == null)
             {
                 return NotFound();
@@ -61,7 +61,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Category")] ProductType productType)
+        public async Task<IActionResult> Create([Bind("ProductTypeId,Category")] ProductType productType)
         {
             if (ModelState.IsValid)
             {
@@ -93,9 +93,9 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Category")] ProductType productType)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductTypeId,Category")] ProductType productType)
         {
-            if (id != productType.Id)
+            if (id != productType.ProductTypeId)
             {
                 return NotFound();
             }
@@ -109,7 +109,7 @@ namespace BackEndCapstone.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductTypeExists(productType.Id))
+                    if (!ProductTypeExists(productType.ProductTypeId))
                     {
                         return NotFound();
                     }
@@ -132,7 +132,7 @@ namespace BackEndCapstone.Controllers
             }
 
             var productType = await _context.ProductType
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProductTypeId == id);
             if (productType == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace BackEndCapstone.Controllers
 
         private bool ProductTypeExists(int id)
         {
-            return _context.ProductType.Any(e => e.Id == id);
+            return _context.ProductType.Any(e => e.ProductTypeId == id);
         }
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
