@@ -54,31 +54,38 @@ namespace BackEndCapstone.Controllers
         // GET: ProductReviews/Create
 
 
-        public async Task<IActionResult> Create(int productId)
-        {
-            if (productId == null)
+        public IActionResult Create()
+
             {
-                var user = await GetCurrentUserAsync();
-            }
-            return View();
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
+                return View();
+        
         }
 
         // POST: ProductReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("productReviews/Create/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Comment,UserId,ProductId,DateAdded")] ProductReview productReview)
+        public async Task<IActionResult> Create(int id, [Bind("Comment,UserId,ProductId")] ProductReview productReview)
+
                 {
-    
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
+            productReview.ProductId = id;
+            var user = await GetCurrentUserAsync();
 
             if (ModelState.IsValid)
             {
+                productReview.UserId = user.Id;
+
                 _context.Add(productReview);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-         
+
+            ViewData["ProductIs"] = new SelectList(_context.Product, "Id", "Id", productReview.ProductId);
             return View(productReview);
         }
 

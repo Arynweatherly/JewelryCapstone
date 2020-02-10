@@ -74,6 +74,8 @@ namespace BackEndCapstone.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromRoute] int tutorialId, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
         {
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
             var user = await GetCurrentUserAsync();
             tutorialReview.UserId = user.Id;
             if (tutorialId != null)
