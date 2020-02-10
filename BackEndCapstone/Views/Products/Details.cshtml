@@ -41,17 +41,32 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ProductType.Category)
         </dd>*@
+    </dl>
 
-        <dt class=" col-sm-2">Reviews</dt>
-        <dd class="col-sm-10">
-            <div>
+        <h4>Reviews</h4>
+        <hr />
+        <dl class="row">
+          
+            
                 @foreach (var product in Model.ProductReviews)
                 {
-                    <li>@Html.DisplayFor(modelItem => product.Comment)</li>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(modelItem => product.User.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => product.User.Email)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(modelItem => product.Comment)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => product.Comment)
+                    </dd>
+             
                 }
-            </div>
-        </dd>
-    </dl>
+            
+          </dl>
+
 </div>
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@

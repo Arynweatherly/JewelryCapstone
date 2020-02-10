@@ -16,6 +16,7 @@ namespace BackEndCapstone.Models
         public Product Product { get; set; }
         [Required]
         public ApplicationUser User { get; set; }
+        
 
     }
 }
