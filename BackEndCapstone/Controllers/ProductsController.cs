@@ -78,7 +78,7 @@ namespace BackEndCapstone.Controllers
         {
             var viewModel = new ProductCreateViewModel();
             var user = await GetCurrentUserAsync();
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category");
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category");
         
             return View();
         }
@@ -117,7 +117,7 @@ namespace BackEndCapstone.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", viewModel.ProductTypeId);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", viewModel.ProductTypeId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", viewModel.UserId);
             return View(viewModel);
 
@@ -137,7 +137,7 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", product.ProductTypeId);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
             return View(product);
         }
 
@@ -187,7 +187,7 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Category", product.ProductTypeId);
+            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
             return View(product);
         }

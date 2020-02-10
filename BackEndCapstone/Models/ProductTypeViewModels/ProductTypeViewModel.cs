@@ -10,8 +10,7 @@ namespace BackEndCapstone.Models.ProductTypeViewModels
     {
         [Key]
         public int ProductTypeId { get; set; }
-        [Key]
-        public int Id { get; set; }
+
 
         [Required]
         [StringLength(255)]
