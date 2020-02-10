@@ -145,6 +145,11 @@ namespace BackEndCapstone.Controllers
                         }
                         gemstone.ImagePath = fileName;
                     }
+                    else
+                    {
+                        gemstone.ImagePath = _context.Gemstone.AsNoTracking().Single<Gemstone>(g => g.Id == gemstone.Id).ImagePath;
+
+                    }
                     gemstone.UserId = user.Id;
                     _context.Update(gemstone);
                     await _context.SaveChangesAsync();

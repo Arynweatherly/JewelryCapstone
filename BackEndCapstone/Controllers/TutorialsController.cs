@@ -145,6 +145,11 @@ namespace BackEndCapstone.Controllers
                         }
                         tutorial.VideoPath = fileName;
                     }
+                    else
+                    {
+                        tutorial.VideoPath = _context.Tutorial.AsNoTracking().Single<Tutorial>(t => t.Id == tutorial.Id).VideoPath;
+
+                    }
                     tutorial.UserId = user.Id;
                     _context.Update(tutorial);
                     await _context.SaveChangesAsync();
