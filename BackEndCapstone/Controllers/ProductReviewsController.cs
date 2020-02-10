@@ -52,7 +52,7 @@ namespace BackEndCapstone.Controllers
         }
 
         // GET: ProductReviews/Create
-        [HttpGet("productReviews/create/{productId}")]
+
 
         public async Task<IActionResult> Create(int productId)
         {
@@ -66,25 +66,19 @@ namespace BackEndCapstone.Controllers
         // POST: ProductReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("productReviews/create/{productId}")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromRoute] int productId, [Bind("Id,Comment,UserId,ProductId,DateAdded")] ProductReview productReview)
+        public async Task<IActionResult> Create([Bind("Id,Comment,UserId,ProductId,DateAdded")] ProductReview productReview)
                 {
-            var user = await GetCurrentUserAsync();
-            productReview.UserId = user.Id;
-
-            if (productId != null)
-            {
-                productReview.ProductId = productId;
-            }
-
+    
 
             if (ModelState.IsValid)
             {
                 _context.Add(productReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Products", new { id = productId });
+                return RedirectToAction(nameof(Index));
             }
+         
             return View(productReview);
         }
 
