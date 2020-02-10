@@ -147,7 +147,7 @@ namespace BackEndCapstone.Controllers
                     }
                     else
                     {
-                        gemstone.ImagePath = _context.Product.AsNoTracking().Single<Product>(g => g.Id == gemstone.Id).ImagePath;
+                        gemstone.ImagePath = _context.Gemstone.AsNoTracking().Single<Gemstone>(g => g.Id == gemstone.Id).ImagePath;
 
                     }
                     gemstone.UserId = user.Id;
