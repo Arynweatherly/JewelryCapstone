@@ -16,7 +16,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <img style="max-height: 250px; min-height: 240px; "class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+        <img style="max-height: 350px; min-height: 340px; "class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
         <dt class="col-sm-2">
         </dt>
         <dd class="col-sm-10">
@@ -56,7 +56,7 @@
 
             </td>
             <td>
-                <a asp-controller="Gemstones" asp-action="Details" asp-route-id="@item.GemstoneId">Gemstone Details</a>
+                <a asp-controller="Gemstones" asp-action="Details" asp-route-id="@item.GemstoneId">Gem info</a>
 
             </td>
         </tr>
@@ -95,23 +95,26 @@
 
     @foreach (var product in Model.ProductReviews)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => product.User.FirstName)
+<tr>
+    @if (product.User.FirstName != null)
+    {
+        <td>
+            @product.User.FirstName
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => product.Comment)
+        </td>
+    }
 
-            </td>
-        </tr>
+    <td>
+        @Html.DisplayFor(modelItem => product.Comment)
+
+    </td>
+</tr>
         <br />
     }
 
 
 </div>
 <div>
-    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 
