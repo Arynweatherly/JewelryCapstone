@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Product Details</h1>
 
 <div>
-    <h4>Product</h4>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -42,23 +42,31 @@
                 @Html.DisplayFor(model => model.ProductType.Category)
             </dd>*@
     </dl>
-    <dt class="col-sm-2">
-        Genres
-    </dt>
-    <dd class="col-sm-10">
-        @foreach (var item in Model.ProductGemstones)
-        {
-            <div>
-                @Html.DisplayFor(modelItem => item.Gemstone.Title) &nbsp;
-            </div>
-        }
-    </dd>
-    
-
-    <h4>Reviews</h4>
     <hr />
-    <dl class="row">
+    <h4><u>Gemstones:</u></h4>
 
+
+
+
+    @foreach (var item in Model.ProductGemstones)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gemstone.Title) &nbsp;
+
+            </td>
+            <td>
+                <a asp-controller="Gemstones" asp-action="Details" asp-route-id="@item.GemstoneId">Gemstone Details</a>
+
+            </td>
+        </tr>
+    }
+
+    <hr />
+
+    @*<h4>Reviews</h4>
+
+    <dl class="row">
 
         @foreach (var product in Model.ProductReviews)
         {
@@ -77,7 +85,29 @@
 
         }
 
-    </dl>
+    </dl>*@
+    <hr />
+
+    <h4><u>Reviews:</u></h4>
+
+
+
+
+    @foreach (var product in Model.ProductReviews)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => product.User.FirstName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Comment)
+
+            </td>
+        </tr>
+        <br />
+    }
+
 
 </div>
 <div>
