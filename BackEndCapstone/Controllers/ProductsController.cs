@@ -158,7 +158,10 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
+
             ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Category", product.ProductTypeId);
+            ViewData["Gemstone"] = new SelectList(_context.Gemstone, "Id", "Title");
+            ViewData["ProductGemstone"] = new SelectList(_context.ProductGemstone, "GemstoneId", "Title");
             return View(product);
         }
 
@@ -167,7 +170,7 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,Description,DateAdded,UserId,ProductTypeId,File")] Product product, IFormFile file)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath,GemstoneIds,Description,DateAdded,UserId,ProductTypeId,File")] Product product, IFormFile file)
         {
             if (id != product.Id)
             {
