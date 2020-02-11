@@ -16,7 +16,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <img style="max-height: 350px; min-height: 340px; "class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+        <img style="max-height: 350px; min-height: 340px; " class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
         <dt class="col-sm-2">
         </dt>
         <dd class="col-sm-10">
@@ -66,54 +66,67 @@
 
     @*<h4>Reviews</h4>
 
-    <dl class="row">
+        <dl class="row">
+
+            @foreach (var product in Model.ProductReviews)
+            {
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => product.User.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => product.User.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => product.Comment)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => product.Comment)
+                </dd>
+
+            }
+
+        </dl>*@
+
+
+    
+        @*<div class="card">
+            <div class="card-header">
+                Comment:
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title"></cite></footer>
+                </blockquote>
+            </div>
+        </div>*@
+
+
+
+        <hr />
+        <h4><u>Reviews:</u></h4>
 
         @foreach (var product in Model.ProductReviews)
         {
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(modelItem => product.User.FirstName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(modelItem => product.User.FirstName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(modelItem => product.Comment)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(modelItem => product.Comment)
-            </dd>
+            <div class="card">
+                @if (product.User.FirstName != null)
+                {
+                    <h4 class="card-title">
+                        @product.User.FirstName
 
+                    </h4>
+                }
+
+                <p class="card-text">
+                    @Html.DisplayFor(modelItem => product.Comment)
+
+                </p>
+            </div>
+            <br />
         }
 
-    </dl>*@
-    <hr />
 
-    <h4><u>Reviews:</u></h4>
-
-
-
-
-    @foreach (var product in Model.ProductReviews)
-    {
-<tr>
-    @if (product.User.FirstName != null)
-    {
-        <td>
-            @product.User.FirstName
-
-        </td>
-    }
-
-    <td>
-        @Html.DisplayFor(modelItem => product.Comment)
-
-    </td>
-</tr>
-        <br />
-    }
-
-
-</div>
+    </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
