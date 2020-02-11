@@ -62,6 +62,7 @@ namespace BackEndCapstone.Controllers
             var product = await _context.Product
                    .Include(p => p.ProductType)
                    .Include(p => p.ProductReviews)
+                   .ThenInclude(p => p.User)
                    .Include(p => p.ProductGemstones)
                    .ThenInclude(pg => pg.Gemstone)
 

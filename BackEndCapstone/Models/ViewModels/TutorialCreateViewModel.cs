@@ -25,7 +25,7 @@ namespace BackEndCapstone.Models.ViewModels
 
         public string Title { get; set; }
 
-
+     
 
         [Required]
         public string UserId { get; set; }
