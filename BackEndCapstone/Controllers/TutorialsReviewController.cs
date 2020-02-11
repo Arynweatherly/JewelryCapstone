@@ -63,7 +63,7 @@ namespace BackEndCapstone.Controllers
 
         {
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            ViewData["Id"] = new SelectList(_context.Tutorial, "Id", "Id");
+            ViewData["TutorialId"] = new SelectList(_context.Tutorial, "Id", "Id");
             return View();
 
         }
@@ -71,9 +71,9 @@ namespace BackEndCapstone.Controllers
         // POST: TutorialsReview/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("TutorialsReview/Create/{tutorialId}")]
+        [HttpPost("tutorialsReview/Create/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
+        public async Task<IActionResult> Create(int id, [Bind("Comment,UserId,TutorialId")] TutorialReview tutorialReview)
 
         {
             ModelState.Remove("User");
@@ -88,7 +88,7 @@ namespace BackEndCapstone.Controllers
 
                 _context.Add(tutorialReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Tutorials", new { id = id });
             }
             ViewData["Id"] = new SelectList(_context.Tutorial,
          "Id", "Id", tutorialReview.TutorialId);

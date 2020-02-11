@@ -9,7 +9,7 @@ namespace BackEndCapstone.Models.ViewModels
     {
         public Tutorial Tutorial { get; set; }
         public List<TutorialReview> TutorialReviews { get; set; }
-        public string comment { get; set; }
+        public string Comment { get; set; }
         public ApplicationUser User { get; set; }
         public string UserId { get; set; }
     }
