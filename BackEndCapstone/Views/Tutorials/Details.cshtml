@@ -34,7 +34,7 @@
 
 <hr />
 <h4><u>Reviews:</u></h4>
-<a asp-controller="TutorialReviews" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
+<a asp-controller="TutorialsReview" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
 <br />
 @foreach (var tutorial in Model.TutorialReviews)
 {
@@ -56,7 +56,7 @@
 
 
 
-<a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReview">Leave A Comment!</a> |
+<a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReviews">Leave A Comment!</a> |
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
