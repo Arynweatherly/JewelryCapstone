@@ -16,9 +16,9 @@
 
 @foreach (var item in Model) {
         <div class="card" style="width: 15rem;">
-            <img style="max-height: 260px; min-height: 250px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
+            <img style="max-height: 260px; min-height: 230px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
             <div class="card-body">
-                <h5 class="card-title">@item.Title</h5>
+                <h7 class="card-title">@item.Title</h7>
                 <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
             </div>
 

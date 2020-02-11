@@ -28,19 +28,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateAdded)
         </dd>
-        @*<dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.UserId)
-            </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.UserId)
-            </dd>*@
 
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ProductType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ProductType.Category)
-            </dd>*@
     </dl>
     <hr />
     <h4><u>Gemstones:</u></h4>
@@ -62,7 +50,7 @@
         </tr>
     }
 
- 
+
 
     @*<h4>Reviews</h4>
 
@@ -88,49 +76,36 @@
         </dl>*@
 
 
-    
-        @*<div class="card">
-            <div class="card-header">
-                Comment:
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title"></cite></footer>
-                </blockquote>
-            </div>
-        </div>*@
 
 
 
-        <hr />
-        <h4><u>Reviews:</u></h4>
 
-        @foreach (var product in Model.ProductReviews)
-        {
-            <div class="card">
-                @if (product.User.FirstName != null)
-                {
-                    <h4 class="card-title">
-                        @product.User.FirstName
+    <hr />
+    <h4><u>Reviews:</u></h4>
+    <a asp-controller="ProductReviews" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
+ <br /> 
+    @foreach (var product in Model.ProductReviews)
+    {
+        <div class="card">
+            @if (product.User.FirstName != null)
+            {
+                <h6 class="card-title"> Username: 
+                    @product.User.FirstName
+                </h6>
+            }
 
-                    </h4>
-                }
+            <p class="card-text">
+                @Html.DisplayFor(modelItem => product.Comment)
 
-                <p class="card-text">
-                    @Html.DisplayFor(modelItem => product.Comment)
-
-                </p>
-            </div>
-            <br />
-        }
+            </p>
+        </div>
+        <br />
+    }
 
 
-    </div>
+</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-
-    <a asp-controller="ProductReviews" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
     <a asp-action="Index">Back to List</a>
 </div>
