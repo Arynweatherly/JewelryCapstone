@@ -21,12 +21,14 @@ namespace BackEndCapstone.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
 
-        public TutorialsReviewController(ApplicationDbContext context)
+        public TutorialsReviewController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+
         {
             _context = context;
 
-        }
+            _userManager = userManager;
 
+        }
         // GET: TutorialsReview
         public async Task<IActionResult> Index()
         {
@@ -56,15 +58,14 @@ namespace BackEndCapstone.Controllers
 
 
         // GET: TutorialsReview/Create
-        [HttpGet("TutorialsReview/Create/{tutorialId}")]
+        public IActionResult Create()
 
-        public async Task<IActionResult> Create(int tutorialId)
+
         {
-            if (tutorialId == null)
-            {
-                var user = await GetCurrentUserAsync();
-            }
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            ViewData["Id"] = new SelectList(_context.Tutorial, "Id", "Id");
             return View();
+
         }
 
         // POST: TutorialsReview/Create
@@ -72,25 +73,25 @@ namespace BackEndCapstone.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("TutorialsReview/Create/{tutorialId}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromRoute] int tutorialId, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
+        public async Task<IActionResult> Create(int id, [Bind("Id,Comment,UserId,TutorialId")] TutorialReview tutorialReview)
+
         {
             ModelState.Remove("User");
             ModelState.Remove("UserId");
+            tutorialReview.TutorialId = id;
             var user = await GetCurrentUserAsync();
-            tutorialReview.UserId = user.Id;
-            if (tutorialId != null)
-            {
-                tutorialReview.TutorialId = tutorialId;
 
-            }
+
             if (ModelState.IsValid)
             {
+                tutorialReview.UserId = user.Id;
+
                 _context.Add(tutorialReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Tutorials", new { id = tutorialId });
+                return RedirectToAction(nameof(Index));
             }
-            ViewData["TutorialId"] = new SelectList(_context.Tutorial,
-         "Id", "Title", tutorialReview.TutorialId);
+            ViewData["Id"] = new SelectList(_context.Tutorial,
+         "Id", "Id", tutorialReview.TutorialId);
             return View(tutorialReview);
         }
         // GET: TutorialsReview/Edit/5

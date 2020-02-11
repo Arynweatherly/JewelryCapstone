@@ -28,13 +28,17 @@ namespace BackEndCapstone.Models.ViewModels
         public string Title { get; set; }
 
 
+
         [Required]
         public string UserId { get; set; }
 
         public string ImagePath { get; set; }
 
+        [Display(Name = "Gemstones")]
 
-
+        public Gemstone Gemstone { get; set; }
+        public List<int> GemstoneIds { get; set; }
+        public List<ProductGemstone> ProductGemstones { get; set; }
 
         [Required]
         public ApplicationUser User { get; set; }
