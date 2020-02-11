@@ -85,7 +85,7 @@ namespace BackEndCapstone.Controllers
                 return RedirectToAction("Details", "Products", new { id = id});
             }
 
-            ViewData["ProductIs"] = new SelectList(_context.Product, "Id", "Id", productReview.ProductId);
+            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", productReview.ProductId);
             return View(productReview);
         }
 
