@@ -82,7 +82,7 @@ namespace BackEndCapstone.Controllers
 
                 _context.Add(productReview);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Products", new { id = id});
             }
 
             ViewData["ProductIs"] = new SelectList(_context.Product, "Id", "Id", productReview.ProductId);

@@ -52,53 +52,25 @@
 
 
 
-    @*<h4>Reviews</h4>
-
-        <dl class="row">
-
-            @foreach (var product in Model.ProductReviews)
-            {
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(modelItem => product.User.FirstName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(modelItem => product.User.FirstName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(modelItem => product.Comment)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(modelItem => product.Comment)
-                </dd>
-
-            }
-
-        </dl>*@
-
-
-
-
-
-
     <hr />
     <h4><u>Reviews:</u></h4>
     <a asp-controller="ProductReviews" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
  <br /> 
     @foreach (var product in Model.ProductReviews)
     {
-        <div class="card">
-            @if (product.User.FirstName != null)
-            {
-                <h6 class="card-title"> Username: 
-                    @product.User.FirstName
-                </h6>
-            }
-
-            <p class="card-text">
-                @Html.DisplayFor(modelItem => product.Comment)
-
-            </p>
-        </div>
+<div class="card">
+    @if (product.User.FirstName != null)
+    {
+        <h6 class="card-title">
+            Username:
+            @product.User.FirstName
+        </h6>
+    }
+    <h8 class="card-subtitle mb-2 text-muted">@product.DateAdded</h8>
+    <p class="card-text">
+        @Html.DisplayFor(modelItem => product.Comment)
+    </p>
+</div>
         <br />
     }
 

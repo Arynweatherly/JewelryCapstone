@@ -29,25 +29,51 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateAdded)
         </dd>
-        <dt class=" col-sm-2">Reviews</dt>
-        <dd class="col-sm-10">
-            <div>
-                @foreach (var tutorial in Model.TutorialReviews)
-                {
-                    <li>@Html.DisplayFor(modelItem => tutorial.Comment)</li>
-                }
-            </div>
-        </dd>
-
-        <dt class="order-sm-10">
-            <form asp-action="Index" asp-controller="TutorialsReview" asp-route-breweryId="@Model.Id">
-                <button>View Comments</button>
-            </form>
-        </dt>
-
-
     </dl>
 </div>
+
+<hr />
+<h4><u>Reviews:</u></h4>
+<a asp-controller="TutorialReviews" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
+<br />
+@foreach (var tutorial in Model.TutorialReviews)
+{
+    <div class="card">
+        @if (tutorial.User.FirstName != null)
+        {
+            <h6 class="card-title">
+                Username:
+                @tutorial.User.FirstName
+            </h6>
+        }
+        <h8 class="card-subtitle mb-2 text-muted">@tutorial.DateAdded</h8>
+        <p class="card-text">
+            @Html.DisplayFor(modelItem => tutorial.Comment)
+        </p>
+    </div>
+    <br />
+}
+
+
+
+@*<dt class=" col-sm-2">Reviews</dt>
+<dd class="col-sm-10">
+    <div>
+        @foreach (var tutorial in Model.TutorialReviews)
+        {
+            <li>@Html.DisplayFor(modelItem => tutorial.Comment)</li>
+        }
+    </div>
+</dd>
+
+<dt class="order-sm-10">
+    <form asp-action="Index" asp-controller="TutorialsReview" asp-route-breweryId="@Model.Id">
+        <button>View Comments</button>
+    </form>
+</dt>*@
+
+
+
 
 @*<div>
 

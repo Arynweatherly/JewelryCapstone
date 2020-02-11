@@ -44,6 +44,7 @@ namespace BackEndCapstone.Controllers
 
             var tutorial = await _context.Tutorial
                  .Include(t => t.TutorialReviews)
+                 .ThenInclude(t => t.User)
 
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tutorial == null)
