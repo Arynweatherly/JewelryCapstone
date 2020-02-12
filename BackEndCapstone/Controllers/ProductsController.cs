@@ -45,7 +45,7 @@ namespace BackEndCapstone.Controllers
                 var model = _context.Product
                     .Include(p => p.ProductType)
                     .Include(p => p.User)
-                        .Where(p => p.Title.Contains(searchString) || p.ProductType.Category.Contains(searchString) );
+                    .Where(p => p.Title.Contains(searchString) || p.ProductType.Category.Contains(searchString) );
                 return View(await model.ToListAsync());
             }
          
