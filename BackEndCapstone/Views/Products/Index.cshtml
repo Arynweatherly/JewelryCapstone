@@ -5,34 +5,45 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Products</h1>
-
-
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
-
-
-    
-<div class="productContainer">
-    <div class="row justify-content-between">
-        @foreach (var item in Model)
-        {
-            <div class="card productCard" style="width: 15rem; margin-bottom: 3rem; margin-left: 1.5rem;">
-                <img style="max-height: 260px; min-height: 230px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
-                <div class="card-body">
-                    <h7 class="card-title">@item.Title</h7>
-                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
-                </div>
-
-
-
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
-                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-
-            </div>
-        }
-        </div>
+<div>
+    <div style="text-align: center">
+        <img align="center" src="~/images//stringBeads2.png" alt="books" style="max-height: 300px; min-height: 200px; max-width:1300px; min-width:1100px;">  &nbsp;
     </div>
+
+</div>
+<hr />
+<br />
+
+<div class="container">
+    <div class="row justify-content-between">
+        <h1>Products</h1>
+
+
+        <p>
+            <a class="btn btn-primary" asp-action="Create">Create New</a>
+        </p>
+        <br />
+
+
+
+        <div class="productContainer">
+            <div class="row justify-content-between">
+                @foreach (var item in Model)
+                {
+                    <div class="card productCard" style="width: 15rem; margin-bottom: 3rem; margin-left: 1.5rem;">
+                        <img style="max-height: 260px; min-height: 230px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
+                        <div class="card-body">
+                            <h7 class="card-title">@item.Title</h7>
+                            <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
+                        </div>
+
+
+
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+                        @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+
+                    </div>
+                }
+            </div>
+        </div>
