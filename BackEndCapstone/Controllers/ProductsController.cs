@@ -121,15 +121,21 @@ namespace BackEndCapstone.Controllers
                     }
                     product.ImagePath = fileName;
                 }
+                
                 product.UserId = user.Id;
-                product.ProductGemstones = viewModel.GemstoneIds.Select(gemstoneId => new ProductGemstone
+                if (viewModel.GemstoneIds.Count() > 0 )
                 {
-                    ProductId = product.Id,
-                    GemstoneId = gemstoneId
-                }).ToList();
-                foreach(var gem in product.ProductGemstones)
-                {
-                    _context.Add(gem);
+                    
+
+                    product.ProductGemstones = viewModel.GemstoneIds.Select(gemstoneId => new ProductGemstone
+                    {
+                        ProductId = product.Id,
+                        GemstoneId = gemstoneId
+                    }).ToList();
+                    foreach (var gem in product.ProductGemstones)
+                    {
+                        _context.Add(gem);
+                    }
                 }
                 _context.Add(product);
                 await _context.SaveChangesAsync();
