@@ -36,6 +36,7 @@
 <h4><u>Reviews:</u></h4>
 <a asp-controller="TutorialsReview" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
 <br />
+
 @foreach (var tutorial in Model.TutorialReviews)
 {
     <div class="card">
@@ -53,6 +54,7 @@
     </div>
     <br />
 }
+   
 
 
 
