@@ -47,6 +47,9 @@ namespace BackEndCapstone.Models.ViewModels
         [Display(Name = "Product Category")]
         public int ProductTypeId { get; set; }
 
+        [Display(Name = "Add To Wish List")]
+        public bool WishList { get; set; }
+
         [Display(Name = "Product Type")]
         public ProductType ProductType { get; set; }
 
