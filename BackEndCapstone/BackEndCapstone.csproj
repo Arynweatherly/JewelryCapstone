@@ -22,4 +22,8 @@
     <None Include="wwwroot\videos\CrimpTutorial.mp4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\Manage\" />
+  </ItemGroup>
+
 </Project>
