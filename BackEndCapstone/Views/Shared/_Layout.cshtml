@@ -33,10 +33,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Gemstones" asp-action="Index">Gemstones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="WishList">WishList</a>
-                        </li>
+                        </li> @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="WishList">WishList</a>
+        </li>*@
+
                     </ul>
                     @if (SignInManager.IsSignedIn(User))
                     {

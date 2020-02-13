@@ -22,13 +22,14 @@
             <a class="btn btn-primary btn-sm" asp-action="Create">Create New</a>
         </p>
         <br />
-        <div class="productContainer">
+
+        <div class="tutorialContainer">
             <div class="row justify-content-between">
                 @foreach (var item in Model)
                 {
-                <div class="card">
+                <div class="card tutorialCard"  style="width: 22rem; margin-bottom: 3rem; margin-left: 1.5rem">
                     <video width="320" height="240" >
-                        <source src="@Url.Content("~/videos/" + item.VideoPath)" type="video/mp4">
+                        <source src="@Url.Content("~/videos/" + item.VideoPath)" type="video/mp4" style=" width: 20rem; margin-bottom: 3rem; margin-left: 1.5rem;">
                         </video>
                         <div class="card-body">
                             <h7 class="card-title">@item.Title</h7>
@@ -44,38 +45,4 @@
 
 
 
-                        @*<thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Title)
-                                </th>
-
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
-
-
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </td>
-
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-
-                                    <td>*@
-                                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
-                                        @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                                    @*</td>
-                                </tr>
-                            }
-                        </tbody>
-                        </table>*@
+                    
