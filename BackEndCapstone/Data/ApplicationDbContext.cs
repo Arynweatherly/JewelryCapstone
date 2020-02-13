@@ -1484,7 +1484,6 @@ namespace BackEndCapstone.Data
             {
                 Id = 15,
                 Title = "great quality",
-
                 UserId = user.Id,
                 ProductId = 22,
                 Comment = "Ordered this necklace and i absolutely love it. Would definitely recommend it!",
@@ -1647,7 +1646,7 @@ namespace BackEndCapstone.Data
             TutorialReview WireWrappingEarringReview = new TutorialReview()
             {
                 Id = 3,
-                Title = "Hopefully this helps"
+                Title = "Hopefully this helps",
                 UserId = user.Id,
                 TutorialId = 2,
                 Comment = "My wire wrapping always looks so ugly because i was doing it wrong. Glad you posted this",
@@ -1669,7 +1668,7 @@ namespace BackEndCapstone.Data
             TutorialReview BeadCapTutorialReview = new TutorialReview()
             {
                 Id = 5,
-                Title = "I hate Bead Caps"
+                Title = "I hate Bead Caps",
                 UserId = user.Id,
                 TutorialId = 4,
                 Comment = "I've had a hard time with bead caps for a while, hoping that after seeing this video it wont be as difficult",

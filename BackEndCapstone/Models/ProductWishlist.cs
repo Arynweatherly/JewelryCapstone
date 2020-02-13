@@ -7,5 +7,8 @@ namespace BackEndCapstone.Models
 {
     public class ProductWishlist
     {
+        public int Id { get; set; }
+        public string User { get; set; }
+        public int ProductId { get; set; }
     }
 }
