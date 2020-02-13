@@ -4,15 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+
 
 <div>
-    <h4>Tutorial</h4>
+    <h4>  @Html.DisplayFor(model => model.Title)</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        @*<dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        </dt>*@
         <dd class="col-sm-7">
             @Html.DisplayFor(model => model.Title)
         </dd>
@@ -54,13 +54,84 @@
     </div>
     <br />
 }
-   
 
 
 
-<a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReviews">Leave A Comment!</a> |
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@foreach (var tutorial in Model.TutorialReviews)
+{
+<div class="review">
+    <div class="review-body">
+        <div class="row">
+            <div class="col-12 col-md-auto">
+                <div class="card">
+
+                    @if (tutorial.User.FirstName != null)
+                    {
+                        <div class="row mb-6">
+                            <div class="col-12">
+
+
+                                <span class="font-size-xs text-muted">
+                                    Username:
+                                    @tutorial.User.FirstName <time>@tutorial.DateAdded</time>
+                                </span>
+
+                            </div>
+                        </div>
+
+
+                        <p class="mb-2 font-size-lg font-weight-bold">
+                            put title here
+                        </p>
+
+
+                        <p class="text-gray-500">
+                            @Html.DisplayFor(modelItem => tutorial.Comment)
+                        </p>
+
+
+                        <div class="row align-items-center">
+                            <div class="col-auto d-none d-lg-block">
+                                <a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReviews">Leave A Comment!</a> |
+                               
+                            </div>
+
+                        </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                            @*<h6 class="card-title">
+                                Username:
+                                @tutorial.User.FirstName
+                            </h6>
+                            }
+                            <h8 class="card-subtitle mb-2 text-muted">@tutorial.DateAdded</h8>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => tutorial.Comment)
+                            </p>
+                        </div>*@
+                        <br />
+                        }
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                        <a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReviews">Leave A Comment!</a> |
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                            <a asp-action="Index">Back to List</a>
+                        </div>

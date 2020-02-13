@@ -12,6 +12,8 @@ namespace BackEndCapstone.Models
         public string UserId { get; set; }
         public int TutorialId { get; set; }
         public string Comment { get; set; }
+        public string Title { get; set; }
+
         public DateTime DateAdded { get; set; }
         public Tutorial Tutorial { get; set; }
 

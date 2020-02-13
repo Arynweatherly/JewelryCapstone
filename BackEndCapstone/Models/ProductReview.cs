@@ -13,6 +13,7 @@ namespace BackEndCapstone.Models
         public int ProductId { get; set; }
         public string Comment { get; set; }
         public DateTime DateAdded { get; set; }
+        public string Title { get; set; }
         public Product Product { get; set; }
         [Required]
         public ApplicationUser User { get; set; }

@@ -10,6 +10,8 @@ namespace BackEndCapstone.Models.ViewModels
         public Tutorial Tutorial { get; set; }
         public List<ProductReview> ProductReviews { get; set; }
         public string Comment { get; set; }
+        public string Title { get; set; }
+
         public ApplicationUser User { get; set; }
         public string UserId { get; set; }
         public string Email { get; set; }

@@ -20,6 +20,7 @@ namespace BackEndCapstone.Data
         public DbSet<ProductGemstone> ProductGemstone { get; set; }
         public DbSet<ProductTutorial> ProductTutorial { get; set; }
         public DbSet<Tutorial> Tutorial { get; set; }
+        public DbSet<ProductWishlist> ProductWishlist { get; set; }
         public DbSet<TutorialReview> TutorialReview { get; set; }
         public DbSet<ProductReview> ProductReview { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
@@ -367,6 +368,83 @@ namespace BackEndCapstone.Data
                 Description = "Mother-of-pearl shell for jewelry refers to the nacre that coats the inside layer of the mollusk shell which is used to form pearls--hence, it's the mother of the pearl. Mother-of-pearl shell jewelry can include much larger focal pieces than simple pearls since nacre substance takes up a whole shell's interior, offering a larger working surface for carving. The pearly luster of mother-of-pearl shell, called orient comes from an overlap of aragonite platelets under a skin of conchiolin (an organic substance). Mother-of-pearl shell offers a feminine iridescence that mixes beautifully with the shell beads. Natural mother-of-pearl shell is not bleached, making it a popular choice among the ecologically minded."
             };
             modelBuilder.Entity<Gemstone>().HasData(MotherOfPearl);
+
+            Gemstone Aquamarine = new Gemstone()
+            {
+                Id = 18,
+                Title = "Aquamarine",
+                UserId = user.Id,
+                ImagePath = "Aquamarine.jpg",
+                Description = "Aquamarine gemstones evoke the colors of the sea. Aquamarine can be blue, very slightly greenish blue, greenish blue, very strongly greenish blue, or green-blue. Aquamarine gemstones are often free from inclusions and clear as water too, symbolizing purity of spirit and soul. They make fantastic gemstones for evening wear because they glitter and gleam even under muted light conditions. During the day or in bright light, they exhibit a soothing coolness.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Aquamarine);
+
+
+            Gemstone Chalcedony = new Gemstone()
+            {
+                Id = 19,
+                Title = "chalcedony",
+                UserId = user.Id,
+                ImagePath = "chalcedony.jpg",
+                Description = "Chalcedony is the form of Quartz that is compact and microcrystalline. It occurs in many different forms, colors, and patterns, and many varieties have been used as gemstones since antiquity. In the gemstone trade, the term Chalcedony is often used specifically to describe the white, gray, or blue translucent type of Chalcedony, but its technical term includes all additional varieties.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Chalcedony);
+
+
+            Gemstone Turquoise = new Gemstone()
+            {
+                Id = 20,
+                Title = "Turquoise",
+                UserId = user.Id,
+                ImagePath = "turquoise.jpg",
+                Description = "Turquoise can be identified by its distinctive sky blue, blue-green or apple-green color and waxy to matt luster.Turquoise is the only gemstone that has a color named after it. Turquoise is sometimes mixed with malachite or chrysocolla, which causes a blue and green mottled appearance..",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Turquoise);
+
+            Gemstone Sodalite = new Gemstone()
+            {
+                Id = 21,
+                Title = "Sodalite",
+                UserId = user.Id,
+                ImagePath = "sodalite.jpg",
+                Description = "Sodalite can be identified by its deep blue color and strong orange fluorescence. It can sometimes exhibit a violet tint and in opaque form often has white veins or patches running through it, which are composed of calcite.Sodalite is a fairly versatile gemstone that can be used in a variety of gemstone jewelry designs. Sodalite beads are popular in beaded necklaces, earrings, and bracelets. Beads can be spherical, tubular, square or tumbled.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Sodalite);
+
+
+
+            Gemstone Fluorite = new Gemstone()
+            {
+                Id = 22,
+                Title = "fluorite",
+                UserId = user.Id,
+                ImagePath = "fluorite.jpg",
+                Description = "Fluorite is considered to be one of most popular minerals in the world among gem and mineral collectors, second only to quartz. It is often referred to as 'the most colorful mineral in the world' owing to its variety of brilliant colors.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Fluorite);
+
+
+            Gemstone Carnelian = new Gemstone()
+            {
+                Id = 23,
+                Title = "Carnelian",
+                UserId = user.Id,
+                ImagePath = "carnelian.jpg",
+                Description = "They all share some color similarities but generally Carnelian (sometimes called Cornelian) is the evenly colored orange version with a golden yellow to reddish brown range.Carnelian is a very reasonably priced gemstone and they are all similar in price no matter the color but the brighter red colors followed by reddish orange are the most sought after so will be valued just a little higher than the paler colors.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(Carnelian);
+
+
+
+            Gemstone ZebraJasper = new Gemstone()
+            {
+                Id = 24,
+                Title = "Zebra Jasper",
+                UserId = user.Id,
+                ImagePath = "zebraJasper.jpg",
+                Description = "Like other jaspers, zebra jasper is found all over the world and has been used since antiquity. But, unlike much jasper which is spotted, this variety of jasper marble is striped. Jasper, an opaque chalcedony, comes in a wide variety of colors, each with unique patterning. Zebra jasper is the variety of jasper known for its mottled warm brick red and avocado green appearance.",
+            };
+            modelBuilder.Entity<Gemstone>().HasData(ZebraJasper);
 
 
 
@@ -743,8 +821,496 @@ namespace BackEndCapstone.Data
             };
             modelBuilder.Entity<Product>().HasData(DarkWoodBracelet);
 
+            Product MaroonNecklace = new Product()
+            {
+                Id = 27,
+                ProductTypeId = 2,
+                UserId = user.Id,
+                Title = "Maroon Necklace",
+                ImagePath = "maroonNecklace.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Delicate necklace on a gold chain with maroon crystals and trendy pendant"
+            };
+            modelBuilder.Entity<Product>().HasData(MaroonNecklace);
+
+            Product ZJTeardrop = new Product()
+            {
+                Id = 28,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Silver Teardrops With Zebra Jasper",
+                ImagePath = "teardropZebraJasp.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Beautiful sterling silver teardrop earrings with zebra jasper gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(ZJTeardrop);
+
+            Product CopperRedJasperHoops = new Product()
+            {
+                Id = 29,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Copper Red Jasper Hoops",
+                ImagePath = "CopperJaspHoops.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Hammered out copper hoops with red jasper gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(CopperRedJasperHoops);
+
+            Product TurqChain = new Product()
+            {
+                Id = 30,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Antique Turqouise Chain Earrnigs",
+                ImagePath = "turqoiseChainEarrings.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Beautiful antique bronze and turquoise chain earrings."
+            };
+            modelBuilder.Entity<Product>().HasData(TurqChain);
+
+            Product TurqTassel = new Product()
+            {
+                Id = 31,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise Fan Tassel Earrings",
+                ImagePath = "turqoiseFanTassle.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Bronze earrings with fan shaped turquoise tassels."
+            };
+            modelBuilder.Entity<Product>().HasData(TurqTassel);
+
+            Product BronzeChain = new Product()
+            {
+                Id = 32,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Rustic Bronze Chain Earrings",
+                ImagePath = "bronzeChain.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Rustic bronze chain earrings."
+            };
+            modelBuilder.Entity<Product>().HasData(BronzeChain);
+
+            Product RoseQtzFeather = new Product()
+            {
+                Id = 33,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Rose Quartz Feather Earrings",
+                ImagePath = "RoseQtzGoldFeather.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold Feather earrings with beautiful rose quartz gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(RoseQtzFeather);
+
+            Product Cactus = new Product()
+            {
+                Id = 34,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Bronze Cactus Earrings",
+                ImagePath = "cactusEarrings.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Quirky bronze cactus earrings with turqouise colored crystals."
+            };
+            modelBuilder.Entity<Product>().HasData(Cactus);
+
+            Product GoldChain = new Product()
+            {
+                Id = 35,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gold Chain Dangle Earrings",
+                ImagePath = "goldChain.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold chain dangle earrings with wire wrapped gold and silver crystal beads."
+            };
+            modelBuilder.Entity<Product>().HasData(GoldChain);
+
+            Product TurqFeather = new Product()
+            {
+                Id = 36,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise Feather Earrings",
+                ImagePath = "goldTurqouiseFeather.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Trendy gold and turqoise trendy earrings."
+            };
+            modelBuilder.Entity<Product>().HasData(TurqFeather);
+
+            Product Aqua = new Product()
+            {
+                Id = 37,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Aquamarine Earrings",
+                ImagePath = "AquamarineDangle.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Sterling silver dangle earrings with oval aquamarine gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(Aqua);
+
+            Product BlackSilver = new Product()
+            {
+                Id = 38,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Black and Silver Earrings",
+                ImagePath = "BlackAndSilver.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Black and silver pendant earrings with small black crystal."
+            };
+            modelBuilder.Entity<Product>().HasData(BlackSilver);
+
+            Product ZebraGunmetal = new Product()
+            {
+                Id = 39,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Zebra Jasper Feather Earrings",
+                ImagePath = "gunmetalZebraJasp.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Dangle earrings with gunmetal feather and zebra jasper gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(ZebraGunmetal);
+
+            Product FlouriteRoseQtz = new Product()
+            {
+                Id = 40,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Soft Toned Gemstone Earrings",
+                ImagePath = "FlouriteRoseQtz.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Beautiful gold dangle earrings with Rose Quarts and Fluorite gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(FlouriteRoseQtz);
+
+            Product blackAndGoldDangle = new Product()
+            {
+                Id = 41,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Black and Gold Dangle Earrings",
+                ImagePath = "blackAndGoldDangle.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Wire wrapped gold dangle earrings with black crystal beads."
+            };
+            modelBuilder.Entity<Product>().HasData(blackAndGoldDangle);
+
+            Product triangleChainTurqoise = new Product()
+            {
+                Id = 42,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise Triangle Earrings",
+                ImagePath = "triangleChainTurqoise.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Triangle shaped earrings with bronze chains and turquoise gemstone chips."
+            };
+            modelBuilder.Entity<Product>().HasData(triangleChainTurqoise);
+
+            Product mixedMetal = new Product()
+            {
+                Id = 43,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Mixed Metal Earrings",
+                ImagePath = "mixedMetalEarrings.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Trendy dangle earrings with mixed metals and shapes."
+            };
+            modelBuilder.Entity<Product>().HasData(mixedMetal);
+
+            Product chalcedonyHoops = new Product()
+            {
+                Id = 44,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Silver and Chalcedony Hoops",
+                ImagePath = "chalcedonyHoops.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Large silver tardrop shaped earrings with chips of wire wrapped chalcedony gemstones"
+            };
+            modelBuilder.Entity<Product>().HasData(chalcedonyHoops);
+
+            Product marbledBlueglass = new Product()
+            {
+                Id = 45,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Light blue and Silver Earrings",
+                ImagePath = "marbledBlueglass.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Dainty silver earrings with marbled light blue glass bead."
+            };
+            modelBuilder.Entity<Product>().HasData(marbledBlueglass);
+
+            Product goldRed = new Product()
+            {
+                Id = 46,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gold and Red Earrings",
+                ImagePath = "GoldAndRed.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold geometric earrings with long red glass beads."
+            };
+            modelBuilder.Entity<Product>().HasData(goldRed);
+
+            Product purpJaspFeather = new Product()
+            {
+                Id = 47,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Purple and Copper Feather Earrings",
+                ImagePath = "purpJaspFeather.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Marbled Purple Jasper gemstone earrings with metal copper feather."
+            };
+            modelBuilder.Entity<Product>().HasData(purpJaspFeather);
+
+            Product glassGoldCube = new Product()
+            {
+                Id = 48,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gold Cube Earrings",
+                ImagePath = "glassGoldCube.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Glass cube earrings with gold chain."
+            };
+            modelBuilder.Entity<Product>().HasData(glassGoldCube);
+
+            Product TurqAngelWing = new Product()
+            {
+                Id = 49,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise Wing Earrings",
+                ImagePath = "TurqAngelWing.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Trendy earrings with gold stone and turquoise wings."
+            };
+            modelBuilder.Entity<Product>().HasData(TurqAngelWing);
+
+            Product gunmetalPearl = new Product()
+            {
+                Id = 50,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gunmetal Pearl Earrings",
+                ImagePath = "gunmetalPearl.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gunmetal hoop earrings with freshwater pearls."
+            };
+            modelBuilder.Entity<Product>().HasData(gunmetalPearl);
 
 
+            Product marbledGoldTeardrop = new Product()
+            {
+                Id = 51,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Marbled Gold Teardrops",
+                ImagePath = "marbledGoldTeardrop.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold teardrop hoops framing marbled gray and black gemstone."
+            };
+            modelBuilder.Entity<Product>().HasData(marbledGoldTeardrop);
+
+
+            Product GeometricZebraJasp = new Product()
+            {
+                Id = 52,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Marble and Silver Geometric Earrings",
+                ImagePath = "GeometricZebraJasp.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Sterling silver geometric earrings with marbled zebra jasper nuggets."
+            };
+            modelBuilder.Entity<Product>().HasData(GeometricZebraJasp);
+
+
+            Product silverChain = new Product()
+            {
+                Id = 53,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Silver Chain Earrings",
+                ImagePath = "silverChain.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Hammered dangle earrings with silver chain."
+            };
+            modelBuilder.Entity<Product>().HasData(silverChain);
+
+
+            Product TurqPearl = new Product()
+            {
+                Id = 54,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise Pearl Earrings ",
+                ImagePath = "TurqPearl.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Trendy turquoise earrings with freshwater pearls."
+            };
+            modelBuilder.Entity<Product>().HasData(TurqPearl);
+
+
+            Product wrappedChalcedTeardrops = new Product()
+            {
+                Id = 55,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gold Chalcedony Earrings",
+                ImagePath = "wrappedChalcedTeardrops.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold earrings with wire wrapped teardop shaped chalcedony"
+            };
+            modelBuilder.Entity<Product>().HasData(wrappedChalcedTeardrops);
+
+
+            Product carnelianEarrings = new Product()
+            {
+                Id = 56,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Carnelian Earrings",
+                ImagePath = "carnelianEarrings.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Statement earrings with large square carnelian gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(carnelianEarrings);
+
+
+            Product blackGeometricHoops = new Product()
+            {
+                Id = 57,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Black and Bronze Geometric Hoops",
+                ImagePath = "blackGeometricHoops.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Bronze hoop earrings with long black gemstones"
+            };
+            modelBuilder.Entity<Product>().HasData(blackGeometricHoops);
+
+
+            Product blueBronzechain = new Product()
+            {
+                Id = 58,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Blue and Bronze Chain Earrings",
+                ImagePath = "blueBronzechain.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Trendy bronze chain dangle earrings with blue glass beads."
+            };
+            modelBuilder.Entity<Product>().HasData(blueBronzechain);
+
+
+            Product goldTeardropAntique = new Product()
+            {
+                Id = 59,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Rustic Teardrop Earrings",
+                ImagePath = "goldTeardropAntique.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Large rustic copper and bronze teardrop earrings."
+            };
+            modelBuilder.Entity<Product>().HasData(goldTeardropAntique);
+
+
+            Product goldFramedTurq = new Product()
+            {
+                Id = 60,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Turquoise pendant Teardrop Earrings",
+                ImagePath = "goldFramedTurq.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold teardrop earrings with turqoise pendant"
+            };
+            modelBuilder.Entity<Product>().HasData(goldFramedTurq);
+
+
+            Product blueCrystalNecklace = new Product()
+            {
+                Id = 61,
+                ProductTypeId = 2,
+                UserId = user.Id,
+                Title = "Blue Crystal Necklace",
+                ImagePath = "blueCrystalNecklace.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Long gold necklace with bright blue crystal pendant."
+            };
+            modelBuilder.Entity<Product>().HasData(blueCrystalNecklace);
+
+            Product pointyTurqoise = new Product()
+            {
+                Id = 62,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Pointy Turquoise Earrings",
+                ImagePath = "pointyTurqoise.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Simple dangle earrings with long turquoise gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(pointyTurqoise);
+
+            Product jasperCubes = new Product()
+            {
+                Id = 63,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Jasper Cube Earrings",
+                ImagePath = "blueCrystalNecklace.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Unique bronze dangle earrings with rare cut jasper gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(jasperCubes);
+
+            Product sodaliteBlueChain = new Product()
+            {
+                Id = 64,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Blue Chain Earrings",
+                ImagePath = "sodaliteBlueChain.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Blue chain earrings with sodalite gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(sodaliteBlueChain);
+
+            Product goldTurqMetal = new Product()
+            {
+                Id = 65,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Gold and Turquoise Earrings",
+                ImagePath = "goldTurqMetal.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Simple turquoise painted gold earrings."
+            };
+            modelBuilder.Entity<Product>().HasData(goldTurqMetal);
+
+            Product wirewrappedLapis = new Product()
+            {
+                Id = 66,
+                ProductTypeId = 1,
+                UserId = user.Id,
+                Title = "Wire Wrapped Lapis Earrings",
+                ImagePath = "wirewrappedLapis.jpg",
+                DateAdded = DateTime.Now,
+                Description = "Gold wire wrapped earrings with bright lapis gemstones."
+            };
+            modelBuilder.Entity<Product>().HasData(wirewrappedLapis);
 
 
 
@@ -756,6 +1322,7 @@ namespace BackEndCapstone.Data
             ProductReview JasperTassleReview = new ProductReview()
             {
                 Id = 1,
+                Title = "awesome!",
                 UserId = user.Id,
                 ProductId = 3,
                 Comment = "These are so pretty! love the color!",
@@ -766,6 +1333,7 @@ namespace BackEndCapstone.Data
             ProductReview RoseQuartzTeardropsReview = new ProductReview()
             {
                 Id = 2,
+                Title = "My fav",
                 UserId = user.Id,
                 ProductId = 15,
                 Comment = "Love these gemstones and the shape of the hoops",
@@ -776,6 +1344,7 @@ namespace BackEndCapstone.Data
             ProductReview LapisHoopsReview = new ProductReview()
             {
                 Id = 3,
+                Title = "love Lapis",
                 UserId = user.Id,
                 ProductId = 14,
                 Comment = "Lapis gems are my favorite. Nice wire wrapping!",
@@ -786,6 +1355,7 @@ namespace BackEndCapstone.Data
             ProductReview InvertedTeardropLepidoliteReview = new ProductReview()
             {
                 Id = 4,
+                Title = "My fav",
                 UserId = user.Id,
                 ProductId = 13,
                 Comment = "These purple gems are so cool. such a pretty design!",
@@ -796,6 +1366,7 @@ namespace BackEndCapstone.Data
             ProductReview AquaQuartzHoopsReview = new ProductReview()
             {
                 Id = 5,
+                Title = "nifty",
                 UserId = user.Id,
                 ProductId = 16,
                 Comment = "Didn't know quartz came in this color. Very cool!",
@@ -806,6 +1377,7 @@ namespace BackEndCapstone.Data
             ProductReview SunstoneDangleEarringsReview = new ProductReview()
             {
                 Id = 6,
+                Title = "My fav",
                 UserId = user.Id,
                 ProductId = 17,
                 Comment = "These sunstones are so pretty!!",
@@ -816,6 +1388,7 @@ namespace BackEndCapstone.Data
             ProductReview BlueLaceGoldHoopsReview = new ProductReview()
             {
                 Id = 7,
+                Title = "Such a pretty color",
                 UserId = user.Id,
                 ProductId = 12,
                 Comment = "These blue lace gems are awesome. Love the wire wrapping",
@@ -826,6 +1399,8 @@ namespace BackEndCapstone.Data
             ProductReview FramedAutumnJasperReview1 = new ProductReview()
             {
                 Id = 8,
+                Title = "Very different",
+
                 UserId = user.Id,
                 ProductId = 11,
                 Comment = "Interesting earrings!",
@@ -836,6 +1411,8 @@ namespace BackEndCapstone.Data
             ProductReview FramedAutumnJasperReview2 = new ProductReview()
             {
                 Id = 9,
+                Title = "Such a pretty color",
+
                 UserId = user.Id,
                 ProductId = 11,
                 Comment = "These bead frames are cool!",
@@ -846,6 +1423,8 @@ namespace BackEndCapstone.Data
             ProductReview PinkOpalHoopsReview = new ProductReview()
             {
                 Id = 10,
+                Title = "Such a pretty color",
+
                 UserId = user.Id,
                 ProductId = 10,
                 Comment = "Oh my god these are so pretty! I want a pair",
@@ -856,6 +1435,8 @@ namespace BackEndCapstone.Data
             ProductReview AutumnJaspEarrings2Review = new ProductReview()
             {
                 Id = 11,
+                Title = "Way to go",
+
                 UserId = user.Id,
                 ProductId = 18,
                 Comment = "I like how you used the bronze cirle with the gemstones!",
@@ -866,6 +1447,8 @@ namespace BackEndCapstone.Data
             ProductReview TreadedEarringReview1 = new ProductReview()
             {
                 Id = 12,
+                Title = "Any other threaded ones?",
+
                 UserId = user.Id,
                 ProductId = 19,
                 Comment = "Threaded earrings are so pretty. do you have them in any other gemstone?",
@@ -876,6 +1459,8 @@ namespace BackEndCapstone.Data
             ProductReview HameredGoldPearlReview1 = new ProductReview()
             {
                 Id = 13,
+                Title = "awesome design",
+
                 UserId = user.Id,
                 ProductId = 20,
                 Comment = "I love how you got the pearls to alternate up and down!",
@@ -886,6 +1471,8 @@ namespace BackEndCapstone.Data
             ProductReview PearlNecklaceReview1 = new ProductReview()
             {
                 Id = 14,
+                Title = "pearls",
+
                 UserId = user.Id,
                 ProductId = 22,
                 Comment = "These pearls are so pretty!",
@@ -896,6 +1483,8 @@ namespace BackEndCapstone.Data
             ProductReview PearlNecklaceReview2 = new ProductReview()
             {
                 Id = 15,
+                Title = "great quality",
+
                 UserId = user.Id,
                 ProductId = 22,
                 Comment = "Ordered this necklace and i absolutely love it. Would definitely recommend it!",
@@ -906,6 +1495,8 @@ namespace BackEndCapstone.Data
             ProductReview BlackOnyxReview = new ProductReview()
             {
                 Id = 16,
+                Title = "Great vibe",
+
                 UserId = user.Id,
                 ProductId = 2,
                 Comment = "I love the antique feel of these earrings!",
@@ -916,6 +1507,8 @@ namespace BackEndCapstone.Data
             ProductReview LepidoliteHoopsReview = new ProductReview()
             {
                 Id = 17,
+                Title = "wrapping",
+
                 UserId = user.Id,
                 ProductId = 4,
                 Comment = "Nice wire wrapping!",
@@ -926,6 +1519,8 @@ namespace BackEndCapstone.Data
             ProductReview CoralHoopsReview = new ProductReview()
             {
                 Id = 18,
+                Title = "nice vibe",
+
                 UserId = user.Id,
                 ProductId = 2,
                 Comment = "I love the antique feel of these earrings!",
@@ -936,6 +1531,8 @@ namespace BackEndCapstone.Data
             ProductReview BlackTasselReview = new ProductReview()
             {
                 Id = 19,
+                Title = "love",
+
                 UserId = user.Id,
                 ProductId = 7,
                 Comment = "So cute and trendy!",
@@ -947,6 +1544,8 @@ namespace BackEndCapstone.Data
             ProductReview LightWoodBraceletReview = new ProductReview()
             {
                 Id = 20,
+                Title = "Thanks again",
+
                 UserId = user.Id,
                 ProductId = 25,
                 Comment = "Ordered a few of these and I love them.",
@@ -958,6 +1557,8 @@ namespace BackEndCapstone.Data
             ProductReview DarkWoodBraceletReview = new ProductReview()
             {
                 Id = 21,
+                Title = "dopeee",
+
                 UserId = user.Id,
                 ProductId = 26,
                 Comment = "This bracelet is dope",
@@ -1022,6 +1623,7 @@ namespace BackEndCapstone.Data
             TutorialReview CrimpVideoReview = new TutorialReview()
             {
                 Id = 1,
+                Title = "Perfect",
                 UserId = user.Id,
                 TutorialId = 1,
                 Comment = "Thanks for posting. I struggled with making good looking crimps for so long. This video was very helpful.",
@@ -1033,6 +1635,7 @@ namespace BackEndCapstone.Data
             TutorialReview ToolsTutorialReview = new TutorialReview()
             {
                 Id = 2,
+                Title = "Thank you!",
                 UserId = user.Id,
                 TutorialId = 3,
                 Comment = "Glad you posted this. I just started making jewelry and wasn't sure which tools to buy! thanks again.",
@@ -1044,6 +1647,7 @@ namespace BackEndCapstone.Data
             TutorialReview WireWrappingEarringReview = new TutorialReview()
             {
                 Id = 3,
+                Title = "Hopefully this helps"
                 UserId = user.Id,
                 TutorialId = 2,
                 Comment = "My wire wrapping always looks so ugly because i was doing it wrong. Glad you posted this",
@@ -1054,6 +1658,7 @@ namespace BackEndCapstone.Data
             TutorialReview WireWrappingEarringReview2 = new TutorialReview()
             {
                 Id = 4,
+                Title = "Yay",
                 UserId = user.Id,
                 TutorialId = 2,
                 Comment = "My wire wrapping looks so much better after watching this video! thank you",
@@ -1064,6 +1669,7 @@ namespace BackEndCapstone.Data
             TutorialReview BeadCapTutorialReview = new TutorialReview()
             {
                 Id = 5,
+                Title = "I hate Bead Caps"
                 UserId = user.Id,
                 TutorialId = 4,
                 Comment = "I've had a hard time with bead caps for a while, hoping that after seeing this video it wont be as difficult",
@@ -1290,10 +1896,156 @@ namespace BackEndCapstone.Data
             ProductGemstone ProductGemstone26 = new ProductGemstone()
             {
                 Id = 26,
-                ProductId = 23,
-                GemstoneId = 15,
+                ProductId = 66,
+                GemstoneId = 3,
             };
             modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone26);
+
+            ProductGemstone ProductGemstone27 = new ProductGemstone()
+            {
+                Id = 27,
+                ProductId = 64,
+                GemstoneId = 21,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone27);
+
+            ProductGemstone ProductGemstone28= new ProductGemstone()
+            {
+                Id = 28,
+                ProductId = 52,
+                GemstoneId = 24,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone28);
+
+            ProductGemstone ProductGemstone29 = new ProductGemstone()
+            {
+                Id = 29,
+                ProductId = 54,
+                GemstoneId = 14,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone29);
+
+            ProductGemstone ProductGemstone30 = new ProductGemstone()
+            {
+                Id = 30,
+                ProductId = 55,
+                GemstoneId = 19,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone30);
+
+            ProductGemstone ProductGemstone31 = new ProductGemstone()
+            {
+                Id = 31,
+                ProductId = 56,
+                GemstoneId = 23,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone31);
+
+            ProductGemstone ProductGemstone32 = new ProductGemstone()
+            {
+                Id = 32,
+                ProductId = 50,
+                GemstoneId = 14,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone32);
+
+            ProductGemstone ProductGemstone33 = new ProductGemstone()
+            {
+                Id = 33,
+                ProductId = 44,
+                GemstoneId = 19,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone33);
+
+            ProductGemstone ProductGemstone34 = new ProductGemstone()
+            {
+                Id = 34,
+                ProductId = 47,
+                GemstoneId = 13,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone34);
+
+            ProductGemstone ProductGemstone35 = new ProductGemstone()
+            {
+                Id = 35,
+                ProductId = 29,
+                GemstoneId = 13,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone35);
+
+            ProductGemstone ProductGemstone36 = new ProductGemstone()
+            {
+                Id = 36,
+                ProductId = 63,
+                GemstoneId = 13,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone36);
+
+            ProductGemstone ProductGemstone37 = new ProductGemstone()
+            {
+                Id = 37,
+                ProductId = 42,
+                GemstoneId = 20,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone37);
+            ProductGemstone ProductGemstone38 = new ProductGemstone()
+            {
+                Id = 38,
+                ProductId = 62,
+                GemstoneId = 20,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone38);
+            ProductGemstone ProductGemstone39 = new ProductGemstone()
+            {
+                Id = 39,
+                ProductId = 28,
+                GemstoneId = 24,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone39);
+            ProductGemstone ProductGemstone40 = new ProductGemstone()
+            {
+                Id = 40,
+                ProductId = 42,
+                GemstoneId = 20,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone40);
+            ProductGemstone ProductGemstone41 = new ProductGemstone()
+            {
+                Id = 41,
+                ProductId = 33,
+                GemstoneId = 10,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone41);
+            ProductGemstone ProductGemstone42 = new ProductGemstone()
+            {
+                Id = 42,
+                ProductId = 40,
+                GemstoneId = 22,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone42);
+            ProductGemstone ProductGemstone43 = new ProductGemstone()
+            {
+                Id = 43,
+                ProductId = 37,
+                GemstoneId = 18,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone43);
+
+            ProductGemstone ProductGemstone44 = new ProductGemstone()
+            {
+                Id = 44,
+                ProductId = 39,
+                GemstoneId = 24,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone44);
+
+            ProductGemstone ProductGemstone45 = new ProductGemstone()
+            {
+                Id = 45,
+                ProductId = 40,
+                GemstoneId = 10,
+            };
+            modelBuilder.Entity<ProductGemstone>().HasData(ProductGemstone45);
 
 
 
