@@ -20,7 +20,6 @@ namespace BackEndCapstone.Models.ViewModels
         public DateTime DateAdded { get; set; }
 
         [Required]
-        [StringLength(255)]
         public string Description { get; set; }
 
         public string Title { get; set; }
