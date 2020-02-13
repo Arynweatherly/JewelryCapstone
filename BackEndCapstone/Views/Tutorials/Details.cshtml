@@ -1,10 +1,14 @@
-﻿@model BackEndCapstone.Models.Tutorial
+﻿@using Microsoft.AspNetCore.Identity
 
+@model BackEndCapstone.Models.Tutorial
+@inject UserManager<ApplicationUser> UserManager
+
+@{ var user = await UserManager.GetUserAsync(User);}
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h2>Tutorial Details</h2>
 
 
 
@@ -26,16 +30,16 @@
             </h1>
             <hr />
             <div class="row align-items-center">
-                <h7>Description:</h7>
+                <h4><u>Description:</u></h4>
                 <p>
                     @Html.DisplayFor(model => model.Description)
                 </p>
             </div>
             <hr />
-           
-                  
 
-           
+
+
+
 
             <div class="row align-items-center">
                 <h4><u>Reviews:</u></h4>
@@ -59,7 +63,7 @@
                         <br />
                     }
                 </div>
-                <a asp-controller="TutorialsReview" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>                <br />
+                <a asp-controller="TutorialsReview" class="btn btn-outline-danger btn-xxs" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>                <br />
             </div>
             <br />
         </div>
@@ -67,67 +71,13 @@
 
 
     </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
 
-    @*<div>
-        <h4>Tutorial</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-            <dd class="col-sm-7">
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <video width="320" height="240" controls autoplay="autoplay">
-
-                <source src="@Url.Content("~/videos/" + Model.VideoPath)" type="video/mp4">
-            </video>
-
-
-            <dd class="col-sm-7">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DateAdded)
-            </dd>
-        </dl>
-    </div>
-
-    <hr />
-    <h4><u>Reviews:</u></h4>
-    <a asp-controller="TutorialsReview" class="btn btn-primary" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
-    <br />
-
-    @foreach (var tutorial in Model.TutorialReviews)
-    {
-        <div class="card">
-            @if (tutorial.User.FirstName != null)
-            {
-                <h6 class="card-title">
-                    Username:
-                    @tutorial.User.FirstName
-                </h6>
-            }
-            <h8 class="card-subtitle mb-2 text-muted">@tutorial.DateAdded</h8>
-            <p class="card-text">
-                @Html.DisplayFor(modelItem => tutorial.Comment)
-            </p>
+@if (user.Email == "admin@admin.com")
+{
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+            <a asp-action="Index">Back to List</a>
         </div>
-        <br />
-    }
+}
 
-
-
-
-    <a asp-action="Create" asp-route-id="@Model.Id" asp-controller="TutorialsReviews">Leave A Comment!</a> |
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-        <a asp-action="Index">Back to List</a>
-    </div>*@

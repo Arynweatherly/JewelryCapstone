@@ -1,4 +1,10 @@
-﻿@model BackEndCapstone.Models.Product
+﻿@using Microsoft.AspNetCore.Identity
+
+@model BackEndCapstone.Models.Product
+
+@inject UserManager<ApplicationUser> UserManager
+
+@{ var user = await UserManager.GetUserAsync(User);}
 
 @{
     ViewData["Title"] = "Details";
@@ -7,75 +13,84 @@
 
 
 
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-6" style="width:500px">
-            <img style="max-height: 600px; min-height: 340px; " class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
-        </div>
-        <div class="col-6" style="width:500px">
-            <h1><u>
-                @Html.DisplayFor(model => model.Title)
-          </u>  </h1>
-            <hr />
-            <div class="row align-items-center">
-                <h7>Description:</h7>
-                <p>
-                    @Html.DisplayFor(model => model.Description)
-                </p>
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-6" style="width:500px">
+                <img style="max-height: 600px; min-height: 340px; " class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
             </div>
-            <hr />
-            <div class="row align-items-center">
-                <div class="col-6" style="width:500px">
-                    <h4>Gemstones Used:</h4>
-                    @foreach (var item in Model.ProductGemstones)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Gemstone.Title) &nbsp;
-                            </td>
-                            <td>
-                                <a asp-controller="Gemstones" asp-action="Details"  class="btn btn-primary  btn-sm" asp-route-id="@item.GemstoneId">Gem info</a>
-                            </td>
-                        </tr>
-                    }
+            <div class="col-6" style="width:500px">
+                <h1>
+                    <u>
+                        @Html.DisplayFor(model =>model.Title)
+                    </u>
+                </h1>
+
+                <hr />
+                <div class=""col-6" style="width:500px">
+                    <h4><u>Description:</u></h4>
+                    <p>
+                        @Html.DisplayFor(model => model.Description)
+                    </p>
                 </div>
+                <hr />
+                <div class="row align-items-center">
+                    <div class="col-6" style="width:500px">
+                        <h4><u>Gemstones Used:</u></h4>
+                        @foreach (var item in Model.ProductGemstones)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gemstone.Title) &nbsp;
+                                </td>
+                                <td>
+                                    <a asp-controller="Gemstones" asp-action="Details" class="btn btn-outline-danger btn-xxs" asp-route-id="@item.GemstoneId">Gem info</a>
+                                </td>
+                            </tr>
+                        }
+                    </div>
                 </div>
 
                 <hr />
 
                 <div class="row align-items-center">
-                    <h4><u>Reviews:</u></h4>
-                    <br />
-                    <div claass="col-6" style="width: 500px">
-                        @foreach (var product in Model.ProductReviews)
-                        {
-                            <div class="card">
-                                @if (product.User.FirstName != null)
-                                {
-                                    <h6 class="card-title">
-                                        Username:
-                                        @product.User.FirstName
-                                    </h6>
-                                }
-                                <h8 class="card-subtitle mb-2 text-muted">@product.DateAdded</h8>
-                                <p class="card-text">
-                                    @Html.DisplayFor(modelItem => product.Comment)
-                                </p>
-                            </div>
-                            <br />
-                        }
-                    </div>
-                    <a asp-controller="ProductReviews" class="btn btn-primary btn-sm" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
-                    <br />
-                </div>
+                    <div class="col-6" style="width:500px">
+
+                        <h4><u>Reviews:</u></h4>
+                        </div>
+                        <br />
+                        <div claass="col-6" style="width: 500px">
+                            @foreach (var product in Model.ProductReviews)
+                            {
+                                <div class="card">
+                                    @if (product.User.FirstName != null)
+                                    {
+                                        <h6 class="card-title">
+                                            Username:
+                                            @product.User.FirstName
+                                        </h6>
+                                    }
+                                    <h8 class="card-subtitle mb-2 text-muted">@product.DateAdded</h8>
+                                    <p class="card-text">
+                                        @Html.DisplayFor(modelItem => product.Comment)
+                                    </p>
+                                </div>
+                                <br />
+                            }
+                        </div>
+                        <a asp-controller="ProductReviews" class="btn btn-outline-danger btn-xxs" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
                         <br />
                     </div>
-    <hr />
+                    <br />
+                </div>
+            <hr />
 
 
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
+        </div>
+        @if (user.Email == "admin@admin.com")
+        {
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        }

@@ -1,7 +1,14 @@
 ﻿
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 
 @model IEnumerable<BackEndCapstone.Models.Product>
 
+
+@{ var user = await UserManager.GetUserAsync(User);}
 @{
     ViewData["Title"] = "Index";
 }
@@ -15,35 +22,62 @@
 <br />
 
 <div class="container">
-    <div class="row justify-content-between">
-        <h1>Products</h1>
-
-
-        <p>
-            <a class="btn btn-primary btn-sm" asp-action="Create">Create New</a>
-        </p>
-        <br />
-
-
-
-        <div class="productContainer">
-            <div class="row justify-content-between">
-                @foreach (var item in Model)
-                {
-                    <div class="card productCard" style="width: 15rem; margin-bottom: 3rem; margin-left: 1.5rem;">
-                        <img style="max-height: 260px; min-height: 230px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
-                        <div class="card-body">
-                            <h7 class="card-title">@item.Title</h7>
-                            <a asp-action="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a>
-                        </div>
-
-
-
-                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
-                        @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-
-                    </div>
-                }
-            </div>
+    <div class="row justify-content-between align-items-center" style="align-content:center">
+        <div class="col">
+            <h1>Products</h1>
         </div>
+        <div class="col">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div>
+                    <form asp-controller="Products" asp-action="Index">
+                        <div class="input-group">
+                            <input type="text" name="searchString" class="form-control" placeholder="Gemstones/Products/Product Types" />
+                            <span class="input-group-btn">
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+
+        <div class="col">
+
+            @if (user.Email == "admin@admin.com")
+            {
+                <p>
+                    <a class="btn btn-outline-danger btn-xxs" asp-action="Create">Create New</a>
+                </p>
+            }
+        </div>
+    </div>
+</div>
+<br />
+
+
+
+<div class="productContainer">
+    <div class="row justify-content-between">
+        @foreach (var item in Model)
+        {
+            <div class="card productCard" style="width: 15rem; margin-bottom: 3rem; margin-left: 1.5rem;">
+                <img style="max-height: 260px; min-height: 230px;" class="card-img-top" src="@Url.Content("~/images/" + item.ImagePath)" alt="Card Img" />
+                <div class="card-body">
+                    <h7 class="card-title">@item.Title</h7>
+                    <hr />
+                    @*<button type="button" class="btn btn-outline-danger">Danger</button>*@
+                    <a asp-action="Details" class="btn btn-outline-danger btn-xxs " asp-route-id="@item.Id">Details</a>
+
+                </div>
+
+
+
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+
+            </div>
+        }
+    </div>
+</div>

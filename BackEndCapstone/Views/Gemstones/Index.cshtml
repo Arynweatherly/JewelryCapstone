@@ -1,8 +1,15 @@
-﻿@model IEnumerable<BackEndCapstone.Models.Gemstone>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<BackEndCapstone.Models.Gemstone>
 
+
+@inject UserManager<ApplicationUser> UserManager
+
+@{ var user = await UserManager.GetUserAsync(User);}
 @{
     ViewData["Title"] = "Index";
 }
+
+
 <div>
     <div style="text-align: center">
         <img align="center" src="~/images//gemstones2.png" alt="books" style="max-height: 300px; min-height: 175px; max-width:1300px; min-width:1100px;">  &nbsp;
@@ -11,10 +18,13 @@
 </div>
 <hr />
 <h1>Gemstones</h1>
-
+@if (user.Email == "admin@admin.com")
+{
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
+}
+
 <hr />
 
 
@@ -27,7 +37,8 @@
                 <div class="card-body">
                     <h7 class="card-title">@item.Title</h7>
                     <hr />
-                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details</a>
+                    @*<button type="button" class="btn btn-outline-danger">Danger</button>*@
+                    <a asp-action="Details" class="btn btn-outline-danger btn-xxs " asp-route-id="@item.Id">Details</a>
                 </div>
             </div>
         }

@@ -116,11 +116,15 @@ namespace BackEndCapstone.Controllers
             {
                 return NotFound();
             }
+            ModelState.Remove("User");
+            ModelState.Remove("UserId");
 
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
                 try
                 {
+                    productReview.UserId = user.Id;
                     _context.Update(productReview);
                     await _context.SaveChangesAsync();
                 }
@@ -137,6 +141,8 @@ namespace BackEndCapstone.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", productReview.UserId);
+
             return View(productReview);
         }
 
