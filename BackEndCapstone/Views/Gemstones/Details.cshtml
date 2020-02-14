@@ -1,33 +1,42 @@
-﻿@model BackEndCapstone.Models.Gemstone
+﻿@using Microsoft.AspNetCore.Identity
+@model BackEndCapstone.Models.Gemstone
+@inject UserManager<ApplicationUser> UserManager
 
+@{ var user = await UserManager.GetUserAsync(User);}
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>Gemstone Details:</h1>
 
-<div>
- 
-    <hr />
-    <dl class="row">
 
-        <dt class="col-sm-4">
-            @Html.DisplayFor(model => model.Title)
-        </dt>
-        <img class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+<div class="container">
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6" style="width:500px">
+            <img style="max-height: 600px; min-height: 340px; " class="img-responsive" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+        </div>
+        <div class="col-6" style="width:500px">
+            <h1>
+                <u>
+                    @Html.DisplayFor(model => model.Title)
+                </u>
+            </h1>
+        
+        <hr />
+        <div class="" col-6" style="width:500px">
+            <h4><u>Description:</u></h4>
+            <p>
+                @Html.DisplayFor(model => model.Description)
+            </p>
+        </div>
+        <hr />
 
- 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    @if (user.Email == "admin@admin.com")
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
 
-    <a asp-action="Index">Back to List</a>
-</div>

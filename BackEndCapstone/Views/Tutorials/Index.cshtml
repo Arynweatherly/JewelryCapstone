@@ -1,5 +1,10 @@
-﻿@model IEnumerable<BackEndCapstone.Models.Tutorial>
+﻿@using Microsoft.AspNetCore.Identity
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<BackEndCapstone.Models.Tutorial>
+@{ var user = await UserManager.GetUserAsync(User);}
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,35 +19,44 @@
 
 
 <div class="container">
-    <div class="row justify-content-between">
-        <h1>Tutorials</h1>
+    <div class="row justify-content-between" style="align-content:center">
+        <div class="col">
+            <h1>Tutorials</h1>
+        </div>
 
 
-        <p>
-            <a class="btn btn-primary btn-sm" asp-action="Create">Create New</a>
-        </p>
-        <br />
+        <div class="col">
 
-        <div class="tutorialContainer">
-            <div class="row justify-content-between">
-                @foreach (var item in Model)
-                {
-                <div class="card tutorialCard"  style="width: 22rem; margin-bottom: 3rem; margin-left: 1.5rem; align-content:center;">
-                    <video width="320" height="240" >
-                        <source src="@Url.Content("~/videos/" + item.VideoPath)" type="video/mp4" style=" width: 20rem;">
-                        </video>
-                        <div class="card-body">
-                            <h7 class="card-title">@item.Title</h7>
-                            <a asp-action="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a>
-
-                        </div>
-                </div>
-                }
-                </div>
+            @if (user.Email == "admin@admin.com")
+            {
+                <p>
+                    <a class="btn btn-outline-danger btn-xxs" asp-action="Create">Create New</a>
+                </p>
+            }
             </div>
         </div>
     </div>
+            <br />
+
+            <div class="tutorialContainer">
+                <div class="row justify-content-between">
+                    @foreach (var item in Model)
+                    {
+                        <div class="card tutorialCard" style="width: 21rem; margin-bottom: 3rem; margin-left: 1.5rem; align-content:center;">
+                            <video width="320" height="240">
+                                <source src="@Url.Content("~/videos/" + item.VideoPath)" type="video/mp4" style=" width: 20rem;">
+                            </video>
+                            <div class="card-body">
+                                <h7 class="card-title">@item.Title</h7>
+                                <hr />
+                                <a asp-action="Details" class="btn btn-outline-danger btn-xxs" asp-route-id="@item.Id">Details</a>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
 
 
 
-                    
+
