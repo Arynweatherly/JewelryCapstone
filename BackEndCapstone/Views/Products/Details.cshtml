@@ -59,30 +59,38 @@
                     <div class="col-6" style="width:500px">
 
                         <h4><u>Reviews:</u></h4>
-                        </div>
-                        <br />
-                        <div claass="col-6" style="width: 500px">
-                            @foreach (var product in Model.ProductReviews)
-                            {
-                                <div class="card">
-                                    @if (product.User.FirstName != null)
-                                    {
-                                        <h6 class="card-title">
-                                            Username:
-                                            @product.User.FirstName
-                                        </h6>
-                                    }
-                                    <h8 class="card-subtitle mb-2 text-muted">@product.DateAdded</h8>
-                                    <p class="card-text">
-                                        @Html.DisplayFor(modelItem => product.Comment)
-                                    </p>
-                                </div>
-                                <br />
-                            }
-                        </div>
-                        <a asp-controller="ProductReviews" class="btn btn-outline-danger btn-xxs" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>
-                        <br />
                     </div>
+                    <br />
+                    <div claass="col-6" style="width: 500px">
+                        @foreach (var product in Model.ProductReviews)
+                        {
+                            <div class="card">
+                                @if (product.User.FirstName != null)
+                                {
+                                    <h6 class="card-title">
+                                        Username:
+                                        @product.User.FirstName
+                                    </h6>
+                                }
+                                <h8 class="card-subtitle mb-2 text-muted">@product.DateAdded</h8>
+                                <p class="card-text">
+                                    @Html.DisplayFor(modelItem => product.Comment)
+                                </p>
+                            </div>
+                            <br />
+                        }
+                    </div>
+
+                    <div class="col">
+
+                        @if (user.Email != "admin@admin.com")
+                        {
+                            <p>
+                                <a asp-controller="ProductReviews" class="btn btn-outline-danger btn-xxs" asp-action="Create" asp-route-id="@Model.Id">Add Comment</a>                            </p>
+                        }
+                    </div>
+                    <br />
+                </div>
                     <br />
                 </div>
             <hr />
