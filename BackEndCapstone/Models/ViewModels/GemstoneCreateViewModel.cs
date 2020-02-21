@@ -18,7 +18,6 @@ namespace BackEndCapstone.Models.ViewModels
      
 
         [Required]
-        [StringLength(255)]
         public string Description { get; set; }
 
         public string Title { get; set; }
