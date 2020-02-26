@@ -10,10 +10,8 @@ using BackEndCapstone.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using BackEndCapstone.Models.ViewModels;
-
 namespace BackEndCapstone.Controllers
 {
-
 
     public class TutorialsReviewController : Controller
     {
