@@ -37,7 +37,6 @@
                 <div class="card-body">
                     <h7 class="card-title">@item.Title</h7>
                     <hr />
-                    @*<button type="button" class="btn btn-outline-danger">Danger</button>*@
                     <a asp-action="Details" class="btn btn-outline-danger btn-xxs " asp-route-id="@item.Id">Details</a>
                 </div>
             </div>
@@ -54,17 +53,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
+        
                     <img style="max-height: 100px; min-height: 90px;" class="img-responsive" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
                 </td>
                 <td>
