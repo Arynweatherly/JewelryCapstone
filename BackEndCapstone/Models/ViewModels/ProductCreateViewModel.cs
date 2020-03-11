@@ -20,11 +20,11 @@ namespace BackEndCapstone.Models.ViewModels
         public DateTime DateAdded { get; set; }
 
         [Required]
-        [StringLength(255)]
+
         public string Description { get; set; }
 
-        [Required]
-        [StringLength(55, ErrorMessage = "Please shorten the product title to 55 characters")]
+        //[Required]
+        //[StringLength(55, ErrorMessage = "Please shorten the product title to 55 characters")]
         public string Title { get; set; }
 
 
